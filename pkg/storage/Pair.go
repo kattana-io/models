@@ -29,8 +29,8 @@ type Pair struct {
 	PriceBUSD    float64 `json:"price_b_usd"`
 	Liquidity    float64 `json:"liquidity"`
 	Volume       float64 `json:"volume"`
-	BaseReserve  float64 `json:"base_reserve"`
-	QuoteReserve float64 `json:"quote_reserve"`
+	BaseReserve  int64   `json:"base_reserve"`
+	QuoteReserve int64   `json:"quote_reserve"`
 	UpdatedAt    int64   `json:"updated_at"`
 	APY          float64 `json:"annual_percentage_yield"`
 }
