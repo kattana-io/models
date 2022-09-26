@@ -23,16 +23,16 @@ type Pair struct {
 	BaseId        uint   `gorm:"column:base_id;type:INT4;" json:"base_id"`
 	QuoteId       uint   `gorm:"column:quote_id;type:INT4;" json:"quote_id"`
 	// there are no columns in DB (OpenSearch only)
-	PriceA       float64 `json:"price_a"`
-	PriceAUSD    float64 `json:"price_a_usd"`
-	PriceB       float64 `json:"price_b"`
-	PriceBUSD    float64 `json:"price_b_usd"`
-	Liquidity    float64 `json:"liquidity"`
-	Volume       float64 `json:"volume"`
-	BaseReserve  int64   `json:"base_reserve"`
-	QuoteReserve int64   `json:"quote_reserve"`
-	UpdatedAt    int64   `json:"updated_at"`
-	APY          float64 `json:"annual_percentage_yield"`
+	PriceA       float64 `gorm:"-" json:"price_a"`
+	PriceAUSD    float64 `gorm:"-" json:"price_a_usd"`
+	PriceB       float64 `gorm:"-" json:"price_b"`
+	PriceBUSD    float64 `gorm:"-" json:"price_b_usd"`
+	Liquidity    float64 `gorm:"-" json:"liquidity"`
+	Volume       float64 `gorm:"-" json:"volume"`
+	BaseReserve  int64   `gorm:"-" json:"base_reserve"`
+	QuoteReserve int64   `gorm:"-" json:"quote_reserve"`
+	UpdatedAt    int64   `gorm:"-" json:"updated_at"`
+	APY          float64 `gorm:"-" json:"annual_percentage_yield"`
 }
 
 // TableName overrides the table name used by User to `profiles`
