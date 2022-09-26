@@ -41,8 +41,8 @@ func (Pair) TableName() string {
 }
 
 // GetQuoteAsset WBTC/WETH will return WETH
-func (t *Pair) GetQuoteAsset() string {
-	split := strings.Split(t.Name, "/")
+func (p *Pair) GetQuoteAsset() string {
+	split := strings.Split(p.Name, "/")
 	if len(split) == 2 {
 		return split[1]
 	}
@@ -50,27 +50,27 @@ func (t *Pair) GetQuoteAsset() string {
 }
 
 // GetBaseAsset WBTC/WETH will return WBTC
-func (t *Pair) GetBaseAsset() string {
-	split := strings.Split(t.Name, "/")
+func (p *Pair) GetBaseAsset() string {
+	split := strings.Split(p.Name, "/")
 	if len(split) == 2 {
 		return split[0]
 	}
 	return ""
 }
 
-func (t *Pair) TradesToUSD() bool {
-	return strings.Contains(t.GetQuoteAsset(), "USD")
+func (p *Pair) TradesToUSD() bool {
+	return strings.Contains(p.GetQuoteAsset(), "USD")
 }
 
-func (t *Pair) GetExchange() string {
-	return t.Exchange
+func (p *Pair) GetExchange() string {
+	return p.Exchange
 }
 
-func (t *Pair) GetBaseQuoteAsset() (string, string) {
-	split := strings.Split(t.Name, "/")
+func (p *Pair) GetBaseQuoteAsset() (string, string) {
+	split := strings.Split(p.Name, "/")
 	return split[0], split[1]
 }
 
-func (t *Pair) GetKey() string {
-	return t.Exchange + "|" + t.Name
+func (p *Pair) GetKey() string {
+	return p.Exchange + "|" + p.Name
 }
