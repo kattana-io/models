@@ -6,10 +6,10 @@ import (
 
 type Pair struct {
 	ID            uint   `gorm:"primaryKey" json:"id"`
-	PairName      string `gorm:"column:name;type:VARCHAR;" json:"name"`
+	Name          string `gorm:"column:name;type:VARCHAR;" json:"name"`
 	Chain         string `gorm:"column:chain;type:VARCHAR;" json:"chain"`
 	Exchange      string `gorm:"column:exchange;type:VARCHAR;" json:"exchange"`
-	PairAddress   string `gorm:"column:address;type:VARCHAR;" json:"address"`
+	Address       string `gorm:"column:address;type:VARCHAR;" json:"address"`
 	BaseAddress   string `gorm:"column:base_address;type:VARCHAR;" json:"base_address"`
 	BaseDecimals  int32  `gorm:"column:base_decimals;type:INT4;default:2;" json:"base_decimals"`
 	QuoteAddress  string `gorm:"column:quote_address;type:VARCHAR;" json:"quote_address"`
@@ -23,14 +23,16 @@ type Pair struct {
 	BaseId        uint   `gorm:"column:base_id;type:INT4;" json:"base_id"`
 	QuoteId       uint   `gorm:"column:quote_id;type:INT4;" json:"quote_id"`
 	// there are no columns in DB (OpenSearch only)
-	Volume       float64 `json:"volume"`
+	PriceA       float64 `json:"price_a"`
+	PriceAUSD    float64 `json:"price_a_usd"`
+	PriceB       float64 `json:"price_b"`
+	PriceBUSD    float64 `json:"price_b_usd"`
 	Liquidity    float64 `json:"liquidity"`
-	Price        float64 `json:"price"`
-	BaseVolume   float64 `json:"base_volume"`
+	Volume       float64 `json:"volume"`
 	BaseReserve  float64 `json:"base_reserve"`
 	QuoteReserve float64 `json:"quote_reserve"`
-	PriceUSD     float64 `json:"price_usd"`
-	LastTrade    int64   `json:"last_trade"`
+	UpdatedAt    int64   `json:"updated_at"`
+	APY          float64 `json:"annual_percentage_yield"`
 }
 
 // TableName overrides the table name used by User to `profiles`
@@ -40,7 +42,7 @@ func (Pair) TableName() string {
 
 // GetQuoteAsset WBTC/WETH will return WETH
 func (t *Pair) GetQuoteAsset() string {
-	split := strings.Split(t.PairName, "/")
+	split := strings.Split(t.Name, "/")
 	if len(split) == 2 {
 		return split[1]
 	}
@@ -49,7 +51,7 @@ func (t *Pair) GetQuoteAsset() string {
 
 // GetBaseAsset WBTC/WETH will return WBTC
 func (t *Pair) GetBaseAsset() string {
-	split := strings.Split(t.PairName, "/")
+	split := strings.Split(t.Name, "/")
 	if len(split) == 2 {
 		return split[0]
 	}
@@ -65,10 +67,10 @@ func (t *Pair) GetExchange() string {
 }
 
 func (t *Pair) GetBaseQuoteAsset() (string, string) {
-	split := strings.Split(t.PairName, "/")
+	split := strings.Split(t.Name, "/")
 	return split[0], split[1]
 }
 
 func (t *Pair) GetKey() string {
-	return t.Exchange + "|" + t.PairName
+	return t.Exchange + "|" + t.Name
 }
