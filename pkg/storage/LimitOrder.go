@@ -17,16 +17,17 @@ type LimitOrder struct {
 	TriggerType string  `gorm:"column:trigger_type;type:VARCHAR;" json:"trigger_type"`
 	Slippage    uint    `gorm:"column:slippage;type:INT4;" json:"slippage"`
 
-	TriggerTx   string `gorm:"column:trigger_tx;type:VARCHAR;" json:"trigger_tx"`
-	ExecutionTx string `gorm:"column:execution_tx;type:VARCHAR;" json:"execution_tx"`
-	Proxy       string `gorm:"column:proxy;type:VARCHAR;" json:"proxy"`
-	AmountIn    string `gorm:"column:amount_in;type:VARCHAR;" json:"amount_in"`
-	AmountOut   string `gorm:"column:amount_out;type:VARCHAR;" json:"amount_out"`
-	SrcAddress  string `gorm:"column:src_address;type:VARCHAR;" json:"src_address"`
-	DestAddress string `gorm:"column:dest_address;type:VARCHAR;" json:"dest_address"`
-	GasSent     int64  `gorm:"column:gas_sent;type:int64;" json:"gas_sent"`
-	TotalGas    int64  `gorm:"column:total_gas;type:int64;" json:"total_gas"`
-	ExpiresAt   int64  `gorm:"column:expires_at;type:int64;" json:"expires_at"`
+	TriggerTx     string `gorm:"column:trigger_tx;type:VARCHAR;" json:"trigger_tx"`
+	ExecutionTx   string `gorm:"column:execution_tx;type:VARCHAR;" json:"execution_tx"`
+	Proxy         string `gorm:"column:proxy;type:VARCHAR;" json:"proxy"`
+	AmountIn      string `gorm:"column:amount_in;type:VARCHAR;" json:"amount_in"`
+	AmountOut     string `gorm:"column:amount_out;type:VARCHAR;" json:"amount_out"`
+	SrcAddress    string `gorm:"column:src_address;type:VARCHAR;" json:"src_address"`
+	DestAddress   string `gorm:"column:dest_address;type:VARCHAR;" json:"dest_address"`
+	GasSent       int64  `gorm:"column:gas_sent;type:int64;" json:"gas_sent"`
+	TotalGas      int64  `gorm:"column:total_gas;type:int64;" json:"total_gas"`
+	ExpiresAt     int64  `gorm:"column:expires_at;type:int64;" json:"expires_at"`
+	FailureReason string `gorm:"column:failure_reason;type:VARCHAR;" json:"failure_reason"`
 }
 
 // TableName overrides the table name used by User to `profiles`
