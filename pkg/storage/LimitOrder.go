@@ -25,8 +25,9 @@ type LimitOrder struct {
 	Slippage            int64   `gorm:"column:slippage;type:int64;" json:"slippage"`
 	ExecutedTradesCount int64   `gorm:"column:executed_trades_count;type:int64;" json:"executed_trades_count"`
 	TradesCount         int64   `gorm:"column:trades_count;type:int64;" json:"trades_count"`
-}
 
+	LimitTrades []LimitTrade `json:"limit_trades"`
+}
 
 // TableName overrides the table name used by User to `profiles`
 func (LimitOrder) TableName() string {
