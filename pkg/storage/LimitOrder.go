@@ -27,6 +27,7 @@ type LimitOrder struct {
 	TradesCount         int64   `gorm:"column:trades_count;type:int64;" json:"trades_count"`
 }
 
+
 // TableName overrides the table name used by User to `profiles`
 func (LimitOrder) TableName() string {
 	return "limit_orders"
