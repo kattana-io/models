@@ -22,7 +22,7 @@ type LimitOrder struct {
 	TotalGas            int64   `gorm:"column:total_gas;type:int64;" json:"total_gas"`
 	ExpiresAt           int64   `gorm:"column:expires_at;type:int64;" json:"expires_at"`
 	TriggerType         string  `gorm:"column:trigger_type;type:VARCHAR;" json:"trigger_type"`
-	Slippage            int64   `gorm:"column:slippage;type:int64;" json:"slippage"`
+	Slippage            uint    `gorm:"column:slippage;type:int64;" json:"slippage"`
 	ExecutedTradesCount int64   `gorm:"column:executed_trades_count;type:int64;" json:"executed_trades_count"`
 	TradesCount         int64   `gorm:"column:trades_count;type:int64;" json:"trades_count"`
 
