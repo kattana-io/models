@@ -26,7 +26,7 @@ type LimitOrder struct {
 	ExecutedTradesCount int64   `gorm:"column:executed_trades_count;type:int64;" json:"executed_trades_count"`
 	TradesCount         int64   `gorm:"column:trades_count;type:int64;" json:"trades_count"`
 
-	LimitTrades []LimitTrade `gorm:"foreignKey:ID" json:"limit_trades"`
+	LimitTrades []LimitTrade `gorm:"foreignKey:OrderId" json:"limit_trades"`
 }
 
 // TableName overrides the table name used by User to `profiles`
