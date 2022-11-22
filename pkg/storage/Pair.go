@@ -33,6 +33,8 @@ type Pair struct {
 	QuoteReserve int64   `gorm:"-" json:"quote_reserve"`
 	UpdatedAt    int64   `gorm:"-" json:"updated_at"`
 	APY          float64 `gorm:"-" json:"annual_percentage_yield"`
+	BaseSlug     string  `gorm:"-" json:"base_slug"`
+	QuoteSlug    string  `gorm:"-" json:"quote_slug"`
 }
 
 // TableName overrides the table name used by User to `profiles`
