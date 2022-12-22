@@ -30,4 +30,5 @@ type LiquidityEvent struct {
 	ValueUSD decimal.Decimal `json:"value_usd"`
 	// Reserves value in USD
 	ReserveUSD decimal.Decimal `json:"reserve_usd"`
+	ValidTill  time.Time       `json:"valid_till"`
 }
