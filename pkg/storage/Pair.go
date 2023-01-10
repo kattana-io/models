@@ -7,6 +7,7 @@ import (
 type Pair struct {
 	ID            uint   `gorm:"primaryKey" json:"id"`
 	Name          string `gorm:"column:name;type:VARCHAR;" json:"name"`
+	FullName      string `gorm:"column:full_name;type:VARCHAR;" json:"full_name"`
 	Chain         string `gorm:"column:chain;type:VARCHAR;" json:"chain"`
 	Exchange      string `gorm:"column:exchange;type:VARCHAR;" json:"exchange"`
 	Address       string `gorm:"column:address;type:VARCHAR;" json:"address"`
