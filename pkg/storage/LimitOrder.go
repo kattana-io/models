@@ -17,7 +17,9 @@ type LimitOrder struct {
 	AmountIn            string  `gorm:"column:amount_in;type:VARCHAR;" json:"amount_in"`
 	AmountOut           string  `gorm:"column:amount_out;type:VARCHAR;" json:"amount_out"`
 	SrcAddress          string  `gorm:"column:src_address;type:VARCHAR;" json:"src_address"`
+	SrcDecimals         int32   `gorm:"column:src_decimals;type:INT4;default:2;" json:"src_decimals"`
 	DestAddress         string  `gorm:"column:dest_address;type:VARCHAR;" json:"dest_address"`
+	DestDecimals        int32   `gorm:"column:dest_decimals;type:INT4;default:2;" json:"dest_decimals"`
 	GasSent             int64   `gorm:"column:gas_sent;type:int64;" json:"gas_sent"`
 	TotalGas            int64   `gorm:"column:total_gas;type:int64;" json:"total_gas"`
 	ExpiresAt           int64   `gorm:"column:expires_at;type:int64;" json:"expires_at"`
