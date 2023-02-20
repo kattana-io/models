@@ -17,6 +17,7 @@ type PriceAlert struct {
 	Gt         bool    `gorm:"column:gt;type:BOOL;" json:"gt"`
 	CreatedAt  int64   `gorm:"column:created_at;type:int64;" json:"created_at"`
 	ExecutedAt int64   `gorm:"column:executed_at;type:int64;" json:"executed_at"`
+	Hidden     bool    `gorm:"column:hidden;type:BOOL;" json:"hidden"`
 }
 
 // TableName overrides the table name used by User to `profiles`
