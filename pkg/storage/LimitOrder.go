@@ -10,8 +10,10 @@ type LimitOrder struct {
 	Flipped             bool    `gorm:"column:flipped;type:BOOL;" json:"flipped"`
 	Price               float64 `gorm:"column:price;type:float8;" json:"price"`
 	PriceUSD            float64 `gorm:"column:price_usd;type:float8;" json:"price_usd"`
-	TriggerPrice        float64 `gorm:"column:price;type:float8;" json:"trigger_price"`
-	TriggerPriceUSD     float64 `gorm:"column:price;type:float8;" json:"trigger_price_usd"`
+	StartPrice          float64 `gorm:"column:start_price;type:float8;" json:"start_price"`
+	StartPriceUSD       float64 `gorm:"column:start_price_usd;type:float8;" json:"start_price_usd"`
+	EndPrice            float64 `gorm:"column:end_price;type:float8;" json:"end_price"`
+	EndPriceUSD         float64 `gorm:"column:end_price_usd;type:float8;" json:"end_price_usd"`
 	ExecutionType       string  `gorm:"column:execution_type;type:VARCHAR;" json:"execution_type"`
 	Gt                  bool    `gorm:"column:gt;type:BOOL;" json:"gt"`
 	Name                string  `gorm:"column:name;type:VARCHAR;" json:"name"`
