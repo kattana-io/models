@@ -1,26 +1,24 @@
 package models
 
 import (
-	"github.com/shopspring/decimal"
-	"math/big"
 	"time"
 )
 
 type DirectSwap struct {
-	Tx          string          `json:"tx"`
-	Date        time.Time       `json:"date"`
-	Chain       string          `json:"chain"`
-	BlockNumber uint64          `json:"blocknumber"`
-	Protocol    string          `json:"protocol"`
-	SrcToken    string          `json:"src_token"`
-	DstToken    string          `json:"dst_token"`
-	Amount0     *big.Int        `json:"amount0"`
-	Amount1     *big.Int        `json:"amount1"`
-	PriceA      decimal.Decimal `json:"pricea"`
-	PriceAUSD   decimal.Decimal `json:"pricea_usd"`
-	PriceB      decimal.Decimal `json:"priceb"`
-	PriceBUSD   decimal.Decimal `json:"priceb_usd"`
-	Wallet      string          `json:"wallet"`
-	Order       uint16          `json:"order"`
-	ValueUSD    decimal.Decimal `json:"value_usd"`
+	Tx          string    `ch:"tx" json:"tx"`
+	Date        time.Time `ch:"date" json:"date"`
+	Chain       string    `ch:"chain" json:"chain"`
+	BlockNumber uint64    `ch:"blocknumber" json:"blocknumber"`
+	Protocol    string    `ch:"protocol" json:"protocol"`
+	SrcToken    string    `ch:"src_token" json:"src_token"`
+	DstToken    string    `ch:"dst_token" json:"dst_token"`
+	Amount0     string    `ch:"amount0" json:"amount0"`
+	Amount1     string    `ch:"amount1" json:"amount1"`
+	PriceA      float32   `ch:"pricea" json:"price_a"`
+	PriceAUSD   float32   `ch:"pricea_usd" json:"price_a_usd"`
+	PriceB      float32   `ch:"priceb" json:"price_b"`
+	PriceBUSD   float32   `ch:"priceb_usd" json:"price_b_usd"`
+	Wallet      string    `ch:"wallet" json:"wallet"`
+	Order       uint16    `ch:"order" json:"order"`
+	ValueUsd    float32   `ch:"value_usd" json:"value_usd"`
 }
