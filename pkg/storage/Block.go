@@ -11,6 +11,7 @@ type Block struct {
 	Node      string   `json:"node"`
 	Notify    bool     `json:"notify"`
 	Timestamp uint64   `json:"timestamp"`
+	Empty     bool     `json:"empty"`
 
 	// block trace
 	DiscoveredAt       int64 `json:"discovered_at"`
