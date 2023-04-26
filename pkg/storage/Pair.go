@@ -36,6 +36,7 @@ type Pair struct {
 	APY          float64 `gorm:"-" json:"annual_percentage_yield"`
 	BaseSlug     string  `gorm:"-" json:"base_slug"`
 	QuoteSlug    string  `gorm:"-" json:"quote_slug"`
+	Order        int32   `gorm:"-" json:"order"`
 }
 
 // TableName overrides the table name used by User to `profiles`
