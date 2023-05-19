@@ -1,0 +1,24 @@
+syntax = "proto3";
+
+package binary;
+
+option go_package = "/pkg-bin/storage";
+
+message PairSwap {
+  string Tx = 1;
+  int64  Date = 2;
+  string Chain = 3;
+  uint64 BlockNumber = 4;
+  string Pair = 5;
+  bytes Amount0 = 6;
+  bytes Amount1 = 7;
+  bool Buy =8;
+  string  PriceA = 9;
+  string  PriceAUSD = 10;
+  string  PriceB = 11;
+  string  PriceBUSD = 12;
+  bool Bot= 13;
+  string  Wallet = 14;
+  uint32  Order = 15;
+  string  ValueUSD = 16;
+}

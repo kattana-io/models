@@ -1,0 +1,40 @@
+syntax = "proto3";
+
+package binary;
+
+option go_package = "/pkg-bin/storage";
+
+message Pair  {
+  uint32   ID = 1;
+  string Name = 2;
+  string FullName = 3;
+  string Chain = 4;
+  string Exchange = 5;
+  string Address = 6;
+  string BaseAddress = 7;
+  int32  BaseDecimals = 8;
+  string QuoteAddress = 9;
+  int32  QuoteDecimals = 10;
+  bool   Hidden = 11;
+  bool   Hot = 12;
+  bool   Flipped = 13;
+  int32   Rank = 14;
+  int32   Kind = 15;
+  int64  PoolCreated = 16;
+  uint32   BaseId = 17;
+  uint32   QuoteId = 18;
+  // there are no columns in DB (OpenSearch only)
+  double PriceA = 19;
+  double PriceAUSD = 20;
+  double PriceB = 21;
+  double PriceBUSD = 22;
+  double Liquidity = 23;
+  double Volume = 24;
+  int64   BaseReserve = 25;
+  int64   QuoteReserve = 26;
+  int64   UpdatedAt = 27;
+  double APY = 28;
+  string  BaseSlug = 29;
+  string  QuoteSlug = 30;
+  int32   Order = 31;
+}

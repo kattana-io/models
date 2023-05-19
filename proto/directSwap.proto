@@ -1,0 +1,25 @@
+syntax = "proto3";
+
+package binary;
+
+option go_package = "/pkg-bin/storage";
+
+message DirectSwap{
+  string Tx = 1;
+  int64  Date = 2;
+  string Chain = 3;
+  uint64 BlockNumber = 4;
+  string Protocol = 5;
+  string SrcToken = 6;
+  string DstToken = 7;
+  bytes Amount0 = 8;
+  bytes Amount1 = 9;
+
+  string  PriceA = 10;
+  string  PriceAUSD = 11;
+  string  PriceB = 12;
+  string  PriceBUSD = 13;
+  string  Wallet = 14;
+  uint32  Order = 15;
+  string  ValueUSD = 16;
+}

@@ -1,0 +1,18 @@
+syntax = "proto3";
+
+package binary;
+
+option go_package = "/pkg-bin/storage";
+
+message TransferEvent {
+  string Chain = 1 ;
+  string Contract = 2;
+  uint64 BlockNumber = 3;
+  int64  Date = 4;
+  uint32 Order = 5;
+  string Tx = 6;
+  string From = 7;
+  string To = 8;
+  string Amount = 9;
+  string ValueUSD = 10;
+}

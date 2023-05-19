@@ -1,0 +1,33 @@
+syntax = "proto3";
+
+package binary;
+
+option go_package = "/pkg-bin/storage";
+
+message LiquidityEvent{
+  // generic info
+  uint64 BlockNumber = 1;
+  int64  Date = 2;
+  string Tx = 3;
+  string Pair = 4;
+  string Chain = 5;
+  string Klass = 6;
+  string Wallet = 7;
+  uint32  Order = 8;
+  // Mint, Burn
+  string Amount0 = 9;
+  string Amount1 = 10;
+  // Sync
+  string Reserve0 = 11;
+  string Reserve1 = 12;
+  // Statistics part
+  string  PriceA = 23;
+  string  PriceAUSD = 14;
+  string  PriceB = 15;
+  string  PriceBUSD = 16;
+  // USD value of operation
+  string ValueUSD = 17;
+  // Reserves value in USD
+  string ReserveUSD = 18;
+  int64 ValidTill = 19;
+}
