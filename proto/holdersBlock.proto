@@ -1,0 +1,15 @@
+syntax = "proto3";
+
+package binary;
+
+option go_package = "/pkg-bin/storage";
+
+import "holder.proto";
+
+message HoldersBlock {
+  uint64     Block = 1;
+  int64      Timestamp = 2;
+  string     Chain = 3;
+  bool       Notify = 4;
+  repeated Holder Holders = 5;
+}

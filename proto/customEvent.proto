@@ -1,0 +1,15 @@
+syntax = "proto3";
+
+package binary;
+
+option go_package = "/pkg-bin/storage";
+
+message CustomEvent{
+  string Tx = 1;
+  string Contract = 2;
+  string Wallet = 3;
+  string Entity = 4;
+  string Klass = 5;
+  string Name = 6;
+  string Data = 7;
+}

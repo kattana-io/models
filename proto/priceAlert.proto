@@ -1,0 +1,24 @@
+syntax = "proto3";
+
+package binary;
+
+option go_package = "/pkg-bin/storage";
+
+message PriceAlert  {
+  uint32    ID = 1;
+  string  Uuid = 2;
+  string  Status = 3;
+  string  Exchange = 4;
+  string  Name = 5;
+  string  Wallet = 6;
+  string  Token = 7;
+  string  Chain = 8;
+  string  Pair = 9;
+  bool    Flipped = 10;
+  double    Price = 11;
+  double   PriceUSD = 12;
+  bool    Gt = 13;
+  int64   CreatedAt = 14;
+  int64   ExecutedAt = 15;
+  bool    Hidden = 16;
+}

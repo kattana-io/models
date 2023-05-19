@@ -1,0 +1,43 @@
+syntax = "proto3";
+
+package binary;
+
+option go_package = "/pkg-bin/storage";
+
+import "limitTrade.proto";
+
+message LimitOrder {
+  uint32     ID = 1;
+  string   Status = 2;
+  string   Uuid = 3;
+  string   Wallet = 4;
+  string   Chain = 5;
+  string   Pair = 6;
+  bool     Flipped = 7;
+  double  Price = 8;
+  double  PriceUSD = 9;
+  double  StartPrice = 10;
+  double  StartPriceUSD = 11;
+  double  EndPrice = 12;
+  double  EndPriceUSD = 13;
+  string   ExecutionType = 14;
+  bool     Gt = 15;
+  string   Name = 16;
+  string   Exchange = 17;
+  string   Proxy = 18;
+  string   AmountIn = 19;
+  string   AmountOut = 20;
+  string   SrcAddress = 21;
+  int32    SrcDecimals = 22;
+  string   DestAddress = 23;
+  int32    DestDecimals = 24;
+  int64    GasSent = 25;
+  int64    TotalGas = 26;
+  int64    ExpiresAt = 27;
+  string   TriggerType = 28;
+  uint32     Slippage = 29;
+  int64    ExecutedTradesCount = 30;
+  int64    TradesCount = 31;
+
+  repeated LimitTrade LimitTrades = 32;
+}

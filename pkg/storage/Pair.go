@@ -1,6 +1,8 @@
 package models
 
 import (
+	"github.com/kattana-io/models/pkg-bin/storage"
+	"google.golang.org/protobuf/proto"
 	"strings"
 )
 
@@ -40,7 +42,7 @@ type Pair struct {
 }
 
 // TableName overrides the table name used by User to `profiles`
-func (Pair) TableName() string {
+func (p *Pair) TableName() string {
 	return "pairs"
 }
 
@@ -77,4 +79,91 @@ func (p *Pair) GetBaseQuoteAsset() (string, string) {
 
 func (p *Pair) GetKey() string {
 	return p.Exchange + "|" + p.Name
+}
+
+func (p *Pair) pack() *storage.Pair {
+	return &storage.Pair{
+		ID:            uint32(p.ID),
+		Name:          p.Name,
+		FullName:      p.FullName,
+		Chain:         p.Chain,
+		Exchange:      p.Exchange,
+		Address:       p.Address,
+		BaseAddress:   p.BaseAddress,
+		BaseDecimals:  p.BaseDecimals,
+		QuoteAddress:  p.QuoteAddress,
+		QuoteDecimals: p.QuoteDecimals,
+		Hidden:        p.Hidden,
+		Hot:           p.Hot,
+		Flipped:       p.Flipped,
+		Rank:          int32(p.Rank),
+		Kind:          int32(p.Kind),
+		PoolCreated:   p.PoolCreated,
+		BaseId:        uint32(p.BaseId),
+		QuoteId:       uint32(p.QuoteId),
+		PriceA:        p.PriceA,
+		PriceAUSD:     p.PriceAUSD,
+		PriceB:        p.PriceB,
+		PriceBUSD:     p.PriceBUSD,
+		Liquidity:     p.Liquidity,
+		Volume:        p.Volume,
+		BaseReserve:   p.BaseReserve,
+		QuoteReserve:  p.QuoteReserve,
+		UpdatedAt:     p.UpdatedAt,
+		APY:           p.APY,
+		BaseSlug:      p.BaseSlug,
+		QuoteSlug:     p.QuoteSlug,
+		Order:         p.Order,
+	}
+}
+
+func (p *Pair) unpack(data *storage.Pair) *Pair {
+	p.ID = uint(data.ID)
+	p.Name = data.Name
+	p.FullName = data.FullName
+	p.Chain = data.Chain
+	p.Exchange = data.Exchange
+	p.Address = data.Address
+	p.BaseAddress = data.BaseAddress
+	p.BaseDecimals = data.BaseDecimals
+	p.QuoteAddress = data.QuoteAddress
+	p.QuoteDecimals = data.QuoteDecimals
+	p.Hidden = data.Hidden
+	p.Hot = data.Hot
+	p.Flipped = data.Flipped
+	p.Rank = byte(data.Rank)
+	p.Kind = byte(data.Kind)
+	p.PoolCreated = data.PoolCreated
+	p.BaseId = uint(data.BaseId)
+	p.QuoteId = uint(data.QuoteId)
+	p.PriceA = data.PriceA
+	p.PriceAUSD = data.PriceAUSD
+	p.PriceB = data.PriceB
+	p.PriceBUSD = data.PriceBUSD
+	p.Liquidity = data.Liquidity
+	p.Volume = data.Volume
+	p.BaseReserve = data.BaseReserve
+	p.QuoteReserve = data.QuoteReserve
+	p.UpdatedAt = data.UpdatedAt
+	p.APY = data.APY
+	p.BaseSlug = data.BaseSlug
+	p.QuoteSlug = data.QuoteSlug
+	p.Order = data.Order
+
+	return p
+}
+
+func (p *Pair) Marshal() ([]byte, error) {
+	return proto.Marshal(p.pack())
+}
+
+func (p *Pair) UnMarshal(buf []byte) error {
+	data := &storage.Pair{}
+	err := proto.Unmarshal(buf, data)
+	if err != nil {
+		return err
+	}
+	// TODO add block validate
+	p.unpack(data)
+	return nil
 }

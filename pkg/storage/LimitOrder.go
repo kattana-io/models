@@ -1,5 +1,10 @@
 package models
 
+import (
+	"github.com/kattana-io/models/pkg-bin/storage"
+	"google.golang.org/protobuf/proto"
+)
+
 type LimitOrder struct {
 	ID                  uint    `gorm:"primaryKey" json:"id"`
 	Status              string  `gorm:"column:status;type:VARCHAR;" json:"status"`
@@ -37,6 +42,92 @@ type LimitOrder struct {
 }
 
 // TableName overrides the table name used by User to `profiles`
-func (LimitOrder) TableName() string {
+func (l *LimitOrder) TableName() string {
 	return "limit_orders"
+}
+
+func (l *LimitOrder) pack() *storage.LimitOrder {
+	return &storage.LimitOrder{
+		ID:                  uint32(l.ID),
+		Status:              l.Status,
+		Uuid:                l.Uuid,
+		Wallet:              l.Wallet,
+		Chain:               l.Chain,
+		Pair:                l.Pair,
+		Flipped:             l.Flipped,
+		Price:               l.Price,
+		PriceUSD:            l.PriceUSD,
+		StartPrice:          l.StartPrice,
+		StartPriceUSD:       l.StartPriceUSD,
+		EndPrice:            l.EndPrice,
+		EndPriceUSD:         l.EndPriceUSD,
+		ExecutionType:       l.ExecutionType,
+		Gt:                  l.Gt,
+		Name:                l.Name,
+		Exchange:            l.Exchange,
+		Proxy:               l.Proxy,
+		AmountIn:            l.AmountIn,
+		AmountOut:           l.AmountOut,
+		SrcAddress:          l.SrcAddress,
+		SrcDecimals:         l.SrcDecimals,
+		DestAddress:         l.DestAddress,
+		DestDecimals:        l.DestDecimals,
+		GasSent:             l.GasSent,
+		TotalGas:            l.TotalGas,
+		ExpiresAt:           l.ExpiresAt,
+		TriggerType:         l.TriggerType,
+		Slippage:            uint32(l.Slippage),
+		ExecutedTradesCount: l.ExecutedTradesCount,
+		TradesCount:         l.TradesCount,
+	}
+}
+
+func (l *LimitOrder) unpack(data *storage.LimitOrder) *LimitOrder {
+	l.ID = uint(data.ID)
+	l.Status = data.Status
+	l.Uuid = data.Uuid
+	l.Wallet = data.Wallet
+	l.Chain = data.Chain
+	l.Pair = data.Pair
+	l.Flipped = data.Flipped
+	l.Price = data.Price
+	l.PriceUSD = data.PriceUSD
+	l.StartPrice = data.StartPrice
+	l.StartPriceUSD = data.StartPriceUSD
+	l.EndPrice = data.EndPrice
+	l.EndPriceUSD = data.EndPriceUSD
+	l.ExecutionType = data.ExecutionType
+	l.Gt = data.Gt
+	l.Name = data.Name
+	l.Exchange = data.Exchange
+	l.Proxy = data.Proxy
+	l.AmountIn = data.AmountIn
+	l.AmountOut = data.AmountOut
+	l.SrcAddress = data.SrcAddress
+	l.SrcDecimals = data.SrcDecimals
+	l.DestAddress = data.DestAddress
+	l.DestDecimals = data.DestDecimals
+	l.GasSent = data.GasSent
+	l.TotalGas = data.TotalGas
+	l.ExpiresAt = data.ExpiresAt
+	l.TriggerType = data.TriggerType
+	l.Slippage = uint(data.Slippage)
+	l.ExecutedTradesCount = data.ExecutedTradesCount
+	l.TradesCount = data.TradesCount
+	return l
+}
+
+func (l *LimitOrder) Marshal() ([]byte, error) {
+	return proto.Marshal(l.pack())
+}
+
+func (l *LimitOrder) UnMarshal(buf []byte) error {
+	data := &storage.LimitOrder{}
+	err := proto.Unmarshal(buf, data)
+	if err != nil {
+		return err
+	}
+	// TODO add block validate
+	l.unpack(data)
+	return nil
 }

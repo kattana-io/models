@@ -1,0 +1,14 @@
+syntax = "proto3";
+
+package binary;
+
+option go_package = "/pkg-bin/storage";
+
+message NewPair {
+  string Factory = 1;
+  string Pair = 2;
+  string Klass = 3;
+  string Network = 4;
+  string Node = 5;
+  int64  PoolCreated = 6;
+}

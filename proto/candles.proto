@@ -1,0 +1,48 @@
+syntax = "proto3";
+
+package binary;
+
+option go_package = "/pkg-bin/storage";
+
+import "pairSwap.proto";
+import "directSwap.proto";
+
+message Candle {
+  double  Open = 1;
+  double  Low = 2;
+  double  High = 3;
+  uint64   Date = 4;
+  double  Close = 5;
+}
+
+message BlockLite {
+  string                Network = 1;
+  uint64                Date = 2;
+  repeated Trade              Trades = 3;
+  repeated PairSwap    PairSwaps = 4;
+  repeated DirectSwap  DirectSwaps = 5;
+}
+
+message Trade {
+  string   Pair = 1;
+  double   PriceA = 2;
+  double   PriceB = 3;
+  double   PriceAUSD = 4;
+  double   PriceBUSD = 5;
+  bytes VolumeA = 6;
+  bytes VolumeB = 7;
+  double   VolumeUSD = 8;
+}
+
+message Volume  {
+  uint64    Date = 1;
+  bytes  VolumeA = 2;
+  bytes VolumeB = 3;
+  double   VolumeUSD = 4;
+}
+
+
+message Candles  {
+  repeated Candle Candle = 1;
+  Volume Volume = 2;
+}

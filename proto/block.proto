@@ -1,0 +1,22 @@
+syntax = "proto3";
+
+package binary;
+
+option go_package = "/pkg-bin/storage";
+
+message Block {
+  string Type = 1;
+  string Network = 2;
+  bytes Number = 3;
+  string Node = 4;
+  bool Notify = 5;
+  uint64 Timestamp = 6;
+  bool Empty = 7;
+
+  // block trace
+  int64 DiscoveredAt = 8;
+  int64 ReceivedInParserAt = 9;
+  int64 ParsedAt = 10;
+  int64 ConsumedAt = 11;
+  int64 LiveSendAt = 12;
+}
