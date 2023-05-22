@@ -1,0 +1,17 @@
+syntax = "proto3";
+
+package binary;
+
+option go_package = "/pkg-bin/storage";
+
+import "directSwap.proto";
+import "pairSwap.proto";
+import "trade.proto";
+
+message TradesBlock  {
+    string              Network = 1;
+    uint64              Date = 2;
+    repeated Trade      Trades = 3;
+    repeated PairSwap   PairSwaps = 4;
+    repeated DirectSwap DirectSwaps = 5;
+}

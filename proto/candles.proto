@@ -6,6 +6,7 @@ option go_package = "/pkg-bin/storage";
 
 import "pairSwap.proto";
 import "directSwap.proto";
+import "trade.proto";
 
 message Candle {
   double  Open = 1;
@@ -16,22 +17,11 @@ message Candle {
 }
 
 message BlockLite {
-  string                Network = 1;
-  uint64                Date = 2;
-  repeated Trade              Trades = 3;
+  string               Network = 1;
+  uint64               Date = 2;
+  repeated Trade       Trades = 3;
   repeated PairSwap    PairSwaps = 4;
   repeated DirectSwap  DirectSwaps = 5;
-}
-
-message Trade {
-  string   Pair = 1;
-  double   PriceA = 2;
-  double   PriceB = 3;
-  double   PriceAUSD = 4;
-  double   PriceBUSD = 5;
-  bytes VolumeA = 6;
-  bytes VolumeB = 7;
-  double   VolumeUSD = 8;
 }
 
 message Volume  {
