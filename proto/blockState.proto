@@ -10,12 +10,16 @@ import "pairSwap.proto";
 import "liquidityEvant.proto";
 import "transferEvent.proto";
 import "newPair.proto";
+import "holder.proto";
+import "customEvent.proto";
 
 message BlockState {
   repeated DirectSwap DirectSwaps = 1;
   repeated PairSwap PairSwaps = 2;
   repeated LiquidityEvent Liquidities =3;
   repeated TransferEvent Transfers = 4;
-  repeated NewPair Pairs =5;
+  repeated NewPair Pairs = 5;
   Block Block = 6;
+  repeated Holder Holders = 7;
+  repeated CustomEvent DexeEvents = 8;
 }
