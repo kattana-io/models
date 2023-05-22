@@ -1,0 +1,18 @@
+syntax = "proto3";
+
+package binary;
+
+option go_package = "/pkg-bin/storage";
+
+message PriceHolder {
+    string Pair = 1;
+    string Chain = 2;
+    string PriceA = 3;
+    string PriceAUSD = 4;
+    string PriceB = 5;
+    string PriceBUSD = 6;
+}
+
+message PriceUpdates {
+    repeated PriceHolder Items = 1;
+}

@@ -1,0 +1,17 @@
+syntax = "proto3";
+
+package binary;
+
+option go_package = "/pkg-bin/storage";
+
+message Trade {
+    string   Pair = 1;
+    double   PriceA = 2;
+    double   PriceB = 3;
+    double   PriceAUSD = 4;
+    double   PriceBUSD = 5;
+    bytes    VolumeA = 6;
+    bytes    VolumeB = 7;
+    double   VolumeUSD = 8;
+  }
+  

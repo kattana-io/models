@@ -1,11 +1,12 @@
 package models
 
 import (
+	"math/big"
+	"time"
+
 	"github.com/kattana-io/models/pkg-bin/storage"
 	"github.com/shopspring/decimal"
 	"google.golang.org/protobuf/proto"
-	"math/big"
-	"time"
 )
 
 type PairSwap struct {
@@ -44,7 +45,7 @@ func (p *PairSwap) Pack() *storage.PairSwap {
 		Bot:         p.Bot,
 		Wallet:      p.Wallet,
 		Order:       uint32(p.Order),
-		ValueUSD:    p.ValueUSD,
+		ValueUSD:    p.ValueUSD.String(),
 	}
 }
 
@@ -64,7 +65,7 @@ func (p *PairSwap) Unpack(data *storage.PairSwap) *PairSwap {
 	p.Bot = data.Bot
 	p.Wallet = data.Wallet
 	p.Order = uint16(data.Order)
-	p.ValueUSD = data.ValueUSD
+	p.ValueUSD = decimal.RequireFromString(data.ValueUSD)
 
 	return p
 }
