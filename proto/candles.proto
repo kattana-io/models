@@ -25,10 +25,9 @@ message BlockLite {
 }
 
 message Volume  {
-  uint64    Date = 1;
-  bytes  VolumeA = 2;
-  bytes VolumeB = 3;
-  double   VolumeUSD = 4;
+  bytes    VolumeA = 1;
+  bytes    VolumeB = 2;
+  double   VolumeUSD = 3;
 }
 
 
