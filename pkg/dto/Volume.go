@@ -1,13 +1,13 @@
 package dto
 
 import (
+	"math/big"
+
 	"github.com/kattana-io/models/pkg-bin/storage"
 	"google.golang.org/protobuf/proto"
-	"math/big"
 )
 
 type Volume struct {
-	Date      uint64   `json:"date"`
 	VolumeA   *big.Int `json:"volume_a"`
 	VolumeB   *big.Int `json:"volume_b"`
 	VolumeUSD float64  `json:"volume_usd"`
@@ -15,7 +15,6 @@ type Volume struct {
 
 func (v *Volume) pack() *storage.Volume {
 	return &storage.Volume{
-		Date:      v.Date,
 		VolumeA:   v.VolumeA.Bytes(),
 		VolumeB:   v.VolumeB.Bytes(),
 		VolumeUSD: v.VolumeUSD,
@@ -23,7 +22,6 @@ func (v *Volume) pack() *storage.Volume {
 }
 
 func (v *Volume) unpack(data *storage.Volume) *Volume {
-	v.Date = data.Date
 	v.VolumeA = new(big.Int).SetBytes(data.VolumeA)
 	v.VolumeB = new(big.Int).SetBytes(data.VolumeB)
 	v.VolumeUSD = data.VolumeUSD
