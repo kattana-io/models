@@ -13,5 +13,6 @@ message Trade {
     bytes    VolumeA = 6;
     bytes    VolumeB = 7;
     double   VolumeUSD = 8;
+    bool     IsBuy = 9;
   }
   
