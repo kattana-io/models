@@ -16,6 +16,7 @@ type Trade struct {
 	VolumeA   *big.Int `json:"volume_a"`
 	VolumeB   *big.Int `json:"volume_b"`
 	VolumeUSD float64  `json:"volume_usd"`
+	IsBuy     bool     `json:"is_buy"`
 }
 
 func (t *Trade) Pack() *storage.Trade {
@@ -28,6 +29,7 @@ func (t *Trade) Pack() *storage.Trade {
 		VolumeA:   t.VolumeA.Bytes(),
 		VolumeB:   t.VolumeB.Bytes(),
 		VolumeUSD: t.VolumeUSD,
+		IsBuy:     t.IsBuy,
 	}
 }
 
@@ -40,6 +42,7 @@ func (t *Trade) Unpack(data *storage.Trade) *Trade {
 	t.VolumeA = big.NewInt(0).SetBytes(data.VolumeA)
 	t.VolumeB = big.NewInt(0).SetBytes(data.VolumeB)
 	t.VolumeUSD = data.VolumeUSD
+	t.IsBuy = data.IsBuy
 
 	return t
 }
