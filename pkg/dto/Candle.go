@@ -9,7 +9,7 @@ type Candle struct {
 	Open  float64 `json:"open"`
 	Low   float64 `json:"low"`
 	High  float64 `json:"high"`
-	Date  uint64  `json:"date"`
+	Date  int32   `json:"date"`
 	Close float64 `json:"close"`
 }
 
