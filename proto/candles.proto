@@ -12,7 +12,7 @@ message Candle {
   double  Open = 1;
   double  Low = 2;
   double  High = 3;
-  uint64   Date = 4;
+  int32   Date = 4;
   double  Close = 5;
 }
 
