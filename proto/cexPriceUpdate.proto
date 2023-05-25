@@ -1,0 +1,11 @@
+syntax = "proto3";
+
+package binary;
+
+option go_package = "/pkg-bin/storage";
+
+message CexPriceUpdate {
+	string   Price = 1;
+	double   BaseVolume = 2;
+	double   QuoteVolume = 3;
+}
