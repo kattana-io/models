@@ -9,7 +9,7 @@ type CexPriceUpdate struct {
 	ID          uint    `json:"-"`
 	Price       string  `json:"price"`
 	BaseVolume  float64 `json:"base_volume"`
-	QuoteVolume float64 `json:"quote_Volume"`
+	QuoteVolume float64 `json:"quote_volume"`
 }
 
 func (c *CexPriceUpdate) Pack() *storage.CexPriceUpdate {
