@@ -18,14 +18,14 @@ message ApiTrade {
     string Amount0 = 7;
     string Amount1 = 8;
     bool Buy = 9;
-    double PriceA = 10;
-    double PriceAUSD = 11;
-    double PriceB = 12;
-    double PriceBUSD = 13;
+    float PriceA = 10;
+    float PriceAUSD = 11;
+    float PriceB = 12;
+    float PriceBUSD = 13;
     bool Bot = 14;
     string Wallet = 15;
     int32 Order = 16;
-    double ValueUsd = 17;
+    float ValueUsd = 17;
     uint64 Ticker = 18;
   }
   
