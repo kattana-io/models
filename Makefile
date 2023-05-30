@@ -22,3 +22,4 @@ proto-gen-go:
 	@docker run --rm -v `pwd`:/defs namely/protoc-all:1.51_1 -i proto -f tradesBlock.proto -l go -o .
 	@docker run --rm -v `pwd`:/defs namely/protoc-all:1.51_1 -i proto -f priceUpdates.proto -l go -o .
 	@docker run --rm -v `pwd`:/defs namely/protoc-all:1.51_1 -i proto -f cexPriceUpdate.proto -l go -o .
+	@docker run --rm -v `pwd`:/defs namely/protoc-all:1.51_1 -i proto -f apiTrades.proto -l go -o .
