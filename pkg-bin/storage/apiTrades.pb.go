@@ -72,24 +72,25 @@ type ApiTrade struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Tx          string  `protobuf:"bytes,1,opt,name=Tx,proto3" json:"Tx,omitempty"`
-	Date        int64   `protobuf:"varint,2,opt,name=Date,proto3" json:"Date,omitempty"`
-	Timestamp   int64   `protobuf:"varint,3,opt,name=Timestamp,proto3" json:"Timestamp,omitempty"`
-	Chain       string  `protobuf:"bytes,4,opt,name=Chain,proto3" json:"Chain,omitempty"`
-	Blocknumber uint64  `protobuf:"varint,5,opt,name=Blocknumber,proto3" json:"Blocknumber,omitempty"`
-	Pair        string  `protobuf:"bytes,6,opt,name=Pair,proto3" json:"Pair,omitempty"`
-	Amount0     string  `protobuf:"bytes,7,opt,name=Amount0,proto3" json:"Amount0,omitempty"`
-	Amount1     string  `protobuf:"bytes,8,opt,name=Amount1,proto3" json:"Amount1,omitempty"`
-	Buy         bool    `protobuf:"varint,9,opt,name=Buy,proto3" json:"Buy,omitempty"`
-	PriceA      float32 `protobuf:"fixed32,10,opt,name=PriceA,proto3" json:"PriceA,omitempty"`
-	PriceAUSD   float32 `protobuf:"fixed32,11,opt,name=PriceAUSD,proto3" json:"PriceAUSD,omitempty"`
-	PriceB      float32 `protobuf:"fixed32,12,opt,name=PriceB,proto3" json:"PriceB,omitempty"`
-	PriceBUSD   float32 `protobuf:"fixed32,13,opt,name=PriceBUSD,proto3" json:"PriceBUSD,omitempty"`
-	Bot         bool    `protobuf:"varint,14,opt,name=Bot,proto3" json:"Bot,omitempty"`
-	Wallet      string  `protobuf:"bytes,15,opt,name=Wallet,proto3" json:"Wallet,omitempty"`
-	Order       int32   `protobuf:"varint,16,opt,name=Order,proto3" json:"Order,omitempty"`
-	ValueUsd    float32 `protobuf:"fixed32,17,opt,name=ValueUsd,proto3" json:"ValueUsd,omitempty"`
-	Ticker      uint64  `protobuf:"varint,18,opt,name=Ticker,proto3" json:"Ticker,omitempty"`
+	Tx           string  `protobuf:"bytes,1,opt,name=Tx,proto3" json:"Tx,omitempty"`
+	Date         int64   `protobuf:"varint,2,opt,name=Date,proto3" json:"Date,omitempty"`
+	Timestamp    int64   `protobuf:"varint,3,opt,name=Timestamp,proto3" json:"Timestamp,omitempty"`
+	Chain        string  `protobuf:"bytes,4,opt,name=Chain,proto3" json:"Chain,omitempty"`
+	Blocknumber  uint64  `protobuf:"varint,5,opt,name=Blocknumber,proto3" json:"Blocknumber,omitempty"`
+	Pair         string  `protobuf:"bytes,6,opt,name=Pair,proto3" json:"Pair,omitempty"`
+	Amount0      string  `protobuf:"bytes,7,opt,name=Amount0,proto3" json:"Amount0,omitempty"`
+	Amount1      string  `protobuf:"bytes,8,opt,name=Amount1,proto3" json:"Amount1,omitempty"`
+	Buy          bool    `protobuf:"varint,9,opt,name=Buy,proto3" json:"Buy,omitempty"`
+	PriceA       float32 `protobuf:"fixed32,10,opt,name=PriceA,proto3" json:"PriceA,omitempty"`
+	PriceAUSD    float32 `protobuf:"fixed32,11,opt,name=PriceAUSD,proto3" json:"PriceAUSD,omitempty"`
+	PriceB       float32 `protobuf:"fixed32,12,opt,name=PriceB,proto3" json:"PriceB,omitempty"`
+	PriceBUSD    float32 `protobuf:"fixed32,13,opt,name=PriceBUSD,proto3" json:"PriceBUSD,omitempty"`
+	Bot          bool    `protobuf:"varint,14,opt,name=Bot,proto3" json:"Bot,omitempty"`
+	Wallet       string  `protobuf:"bytes,15,opt,name=Wallet,proto3" json:"Wallet,omitempty"`
+	Order        int32   `protobuf:"varint,16,opt,name=Order,proto3" json:"Order,omitempty"`
+	ValueUsd     float32 `protobuf:"fixed32,17,opt,name=ValueUsd,proto3" json:"ValueUsd,omitempty"`
+	Ticker       uint64  `protobuf:"varint,18,opt,name=Ticker,proto3" json:"Ticker,omitempty"`
+	IsProxyTrade bool    `protobuf:"varint,19,opt,name=IsProxyTrade,proto3" json:"IsProxyTrade,omitempty"`
 }
 
 func (x *ApiTrade) Reset() {
@@ -250,6 +251,13 @@ func (x *ApiTrade) GetTicker() uint64 {
 	return 0
 }
 
+func (x *ApiTrade) GetIsProxyTrade() bool {
+	if x != nil {
+		return x.IsProxyTrade
+	}
+	return false
+}
+
 var File_apiTrades_proto protoreflect.FileDescriptor
 
 var file_apiTrades_proto_rawDesc = []byte{
@@ -258,7 +266,7 @@ var file_apiTrades_proto_rawDesc = []byte{
 	0x54, 0x72, 0x61, 0x64, 0x65, 0x73, 0x42, 0x6c, 0x6f, 0x63, 0x6b, 0x12, 0x28, 0x0a, 0x06, 0x54,
 	0x72, 0x61, 0x64, 0x65, 0x73, 0x18, 0x01, 0x20, 0x03, 0x28, 0x0b, 0x32, 0x10, 0x2e, 0x62, 0x69,
 	0x6e, 0x61, 0x72, 0x79, 0x2e, 0x41, 0x70, 0x69, 0x54, 0x72, 0x61, 0x64, 0x65, 0x52, 0x06, 0x54,
-	0x72, 0x61, 0x64, 0x65, 0x73, 0x22, 0xbe, 0x03, 0x0a, 0x08, 0x41, 0x70, 0x69, 0x54, 0x72, 0x61,
+	0x72, 0x61, 0x64, 0x65, 0x73, 0x22, 0xe2, 0x03, 0x0a, 0x08, 0x41, 0x70, 0x69, 0x54, 0x72, 0x61,
 	0x64, 0x65, 0x12, 0x0e, 0x0a, 0x02, 0x54, 0x78, 0x18, 0x01, 0x20, 0x01, 0x28, 0x09, 0x52, 0x02,
 	0x54, 0x78, 0x12, 0x12, 0x0a, 0x04, 0x44, 0x61, 0x74, 0x65, 0x18, 0x02, 0x20, 0x01, 0x28, 0x03,
 	0x52, 0x04, 0x44, 0x61, 0x74, 0x65, 0x12, 0x1c, 0x0a, 0x09, 0x54, 0x69, 0x6d, 0x65, 0x73, 0x74,
@@ -286,9 +294,11 @@ var file_apiTrades_proto_rawDesc = []byte{
 	0x65, 0x72, 0x12, 0x1a, 0x0a, 0x08, 0x56, 0x61, 0x6c, 0x75, 0x65, 0x55, 0x73, 0x64, 0x18, 0x11,
 	0x20, 0x01, 0x28, 0x02, 0x52, 0x08, 0x56, 0x61, 0x6c, 0x75, 0x65, 0x55, 0x73, 0x64, 0x12, 0x16,
 	0x0a, 0x06, 0x54, 0x69, 0x63, 0x6b, 0x65, 0x72, 0x18, 0x12, 0x20, 0x01, 0x28, 0x04, 0x52, 0x06,
-	0x54, 0x69, 0x63, 0x6b, 0x65, 0x72, 0x42, 0x12, 0x5a, 0x10, 0x2f, 0x70, 0x6b, 0x67, 0x2d, 0x62,
-	0x69, 0x6e, 0x2f, 0x73, 0x74, 0x6f, 0x72, 0x61, 0x67, 0x65, 0x62, 0x06, 0x70, 0x72, 0x6f, 0x74,
-	0x6f, 0x33,
+	0x54, 0x69, 0x63, 0x6b, 0x65, 0x72, 0x12, 0x22, 0x0a, 0x0c, 0x49, 0x73, 0x50, 0x72, 0x6f, 0x78,
+	0x79, 0x54, 0x72, 0x61, 0x64, 0x65, 0x18, 0x13, 0x20, 0x01, 0x28, 0x08, 0x52, 0x0c, 0x49, 0x73,
+	0x50, 0x72, 0x6f, 0x78, 0x79, 0x54, 0x72, 0x61, 0x64, 0x65, 0x42, 0x12, 0x5a, 0x10, 0x2f, 0x70,
+	0x6b, 0x67, 0x2d, 0x62, 0x69, 0x6e, 0x2f, 0x73, 0x74, 0x6f, 0x72, 0x61, 0x67, 0x65, 0x62, 0x06,
+	0x70, 0x72, 0x6f, 0x74, 0x6f, 0x33,
 }
 
 var (
