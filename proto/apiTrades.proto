@@ -27,5 +27,6 @@ message ApiTrade {
     int32 Order = 16;
     float ValueUsd = 17;
     uint64 Ticker = 18;
+    bool IsProxyTrade = 19;
   }
   
