@@ -18,6 +18,7 @@ type LimitTrade struct {
 	FailureReason string  `gorm:"column:failure_reason;type:VARCHAR;" json:"failure_reason"`
 	Price         float64 `gorm:"column:price;type:float8;" json:"price"`
 	PriceUSD      float64 `gorm:"column:price_usd;type:float8;" json:"price_usd"`
+	UpdatedAt     int64   `gorm:"column:updated_at;type:int64;" json:"updated_at"`
 }
 
 // TableName overrides the table name used by User to `profiles`
@@ -39,6 +40,7 @@ func (l *LimitTrade) pack() *storage.LimitTrade {
 		FailureReason: l.FailureReason,
 		Price:         l.Price,
 		PriceUSD:      l.PriceUSD,
+		UpdatedAt:     l.UpdatedAt,
 	}
 }
 
@@ -55,6 +57,7 @@ func (l *LimitTrade) unpack(data *storage.LimitTrade) *LimitTrade {
 	l.FailureReason = data.FailureReason
 	l.Price = data.Price
 	l.PriceUSD = data.PriceUSD
+	l.UpdatedAt = data.UpdatedAt
 
 	return l
 }
