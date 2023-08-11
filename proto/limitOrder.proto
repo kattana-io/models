@@ -40,4 +40,5 @@ message LimitOrder {
   int64    TradesCount = 31;
 
   repeated LimitTrade LimitTrades = 32;
+  int64    CreatedAt = 33;
 }

@@ -17,4 +17,5 @@ message LimitTrade {
   string   FailureReason = 10;
   double  Price = 11;
   double  PriceUSD = 12;
+  int64    UpdatedAt = 13;
 }
