@@ -1,0 +1,13 @@
+syntax = "proto3";
+
+package binary;
+
+option go_package = "/pkg-bin/storage";
+
+message Transaction {
+  string  From = 1;
+  string  Hash = 2;
+  string  Input = 3;
+  string  To = 4;
+  string  Value = 5;
+}
