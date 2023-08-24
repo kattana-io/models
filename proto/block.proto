@@ -4,6 +4,8 @@ package binary;
 
 option go_package = "/pkg-bin/storage";
 
+import "transaction.proto";
+
 message Block {
   string Type = 1;
   string Network = 2;
@@ -19,4 +21,6 @@ message Block {
   int64 ParsedAt = 10;
   int64 ConsumedAt = 11;
   int64 LiveSendAt = 12;
+  repeated Transaction Transactions = 13;
+  repeated bytes Logs = 14;
 }
