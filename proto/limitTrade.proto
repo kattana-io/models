@@ -5,8 +5,8 @@ package binary;
 option go_package = "/pkg-bin/storage";
 
 message LimitTrade {
-  uint32     ID = 1;
-  uint32     OrderId = 2;
+  uint32   ID = 1;
+  uint32   OrderId = 2;
   string   Status = 3;
   string   AmountIn = 4;
   string   AmountOut = 5;
@@ -15,7 +15,8 @@ message LimitTrade {
   string   TriggerTx = 8;
   string   ExecutionTx = 9;
   string   FailureReason = 10;
-  double  Price = 11;
-  double  PriceUSD = 12;
+  double   Price = 11;
+  double   PriceUSD = 12;
   int64    UpdatedAt = 13;
+  int64    PlannedExecTime = 14;
 }
