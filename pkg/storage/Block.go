@@ -17,6 +17,7 @@ type Block struct {
 	Empty        bool           `json:"empty"`
 	Transactions []*Transaction `json:"transactions,omitempty"`
 	Logs         []types.Log    `json:"logs,omitempty"`
+	Part         uint8          `json:"-"`
 
 	// block trace
 	DiscoveredAt       int64 `json:"discovered_at"`
