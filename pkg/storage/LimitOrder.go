@@ -38,6 +38,7 @@ type LimitOrder struct {
 	ExecutedTradesCount int64   `gorm:"column:executed_trades_count;type:int64;" json:"executed_trades_count"`
 	TradesCount         int64   `gorm:"column:trades_count;type:int64;" json:"trades_count"`
 	CreatedAt           int64   `gorm:"column:created_at;type:int64;" json:"created_at"`
+	TradesTimeDistance  int64   `gorm:"column:trades_time_distance;type:int64;" json:"trades_time_distance"`
 
 	LimitTrades []LimitTrade `gorm:"foreignKey:OrderId" json:"limit_trades"`
 }
@@ -81,6 +82,7 @@ func (l *LimitOrder) pack() *storage.LimitOrder {
 		ExecutedTradesCount: l.ExecutedTradesCount,
 		TradesCount:         l.TradesCount,
 		CreatedAt:           l.CreatedAt,
+		TradesTimeDistance:  l.TradesTimeDistance,
 	}
 }
 
@@ -117,6 +119,7 @@ func (l *LimitOrder) unpack(data *storage.LimitOrder) *LimitOrder {
 	l.ExecutedTradesCount = data.ExecutedTradesCount
 	l.TradesCount = data.TradesCount
 	l.CreatedAt = data.CreatedAt
+	l.TradesTimeDistance = data.TradesTimeDistance
 	return l
 }
 
