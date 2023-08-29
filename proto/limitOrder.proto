@@ -42,4 +42,5 @@ message LimitOrder {
   repeated LimitTrade LimitTrades = 32;
   int64    CreatedAt = 33;
   int64    TradesTimeDistance = 34;
+  int64    LastTradeTime = 35;
 }
