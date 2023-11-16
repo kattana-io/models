@@ -5,6 +5,16 @@ import (
 	"google.golang.org/protobuf/proto"
 )
 
+type LastCandle struct {
+	BaseFlipped    *Candle `json:"base_flipped"`
+	BaseNotFlipped *Candle `json:"base_not_flipped"`
+	USDFlipped     *Candle `json:"usd_flipped"`
+	USDNotFlipped  *Candle `json:"usd_not_flipped"`
+	LastUpdate     int64   `json:"last_update"`
+	IntervalTime   int64   `json:"interval_time"`
+	Volume         *Volume `json:"volume"`
+}
+
 type Candle struct {
 	Open  float64 `json:"open"`
 	Low   float64 `json:"low"`
