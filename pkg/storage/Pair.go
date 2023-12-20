@@ -1,9 +1,10 @@
 package models
 
 import (
+	"strings"
+
 	"github.com/kattana-io/models/pkg-bin/storage"
 	"google.golang.org/protobuf/proto"
-	"strings"
 )
 
 type Pair struct {
@@ -39,6 +40,10 @@ type Pair struct {
 	BaseSlug     string  `gorm:"-" json:"base_slug"`
 	QuoteSlug    string  `gorm:"-" json:"quote_slug"`
 	Order        int32   `gorm:"-" json:"order"`
+	ChangeA      float64 `gorm:"-" json:"change_a"`
+	ChangeAUSD   float64 `gorm:"-" json:"change_a_usd"`
+	ChangeB      float64 `gorm:"-" json:"change_b"`
+	ChangeBUSD   float64 `gorm:"-" json:"change_b_usd"`
 }
 
 // TableName overrides the table name used by User to `profiles`
@@ -114,6 +119,10 @@ func (p *Pair) pack() *storage.Pair {
 		BaseSlug:      p.BaseSlug,
 		QuoteSlug:     p.QuoteSlug,
 		Order:         p.Order,
+		ChangeA:       p.ChangeA,
+		ChangeAUSD:    p.ChangeAUSD,
+		ChangeB:       p.ChangeB,
+		ChangeBUSD:    p.ChangeBUSD,
 	}
 }
 
@@ -149,6 +158,10 @@ func (p *Pair) unpack(data *storage.Pair) *Pair {
 	p.BaseSlug = data.BaseSlug
 	p.QuoteSlug = data.QuoteSlug
 	p.Order = data.Order
+	p.ChangeA = data.ChangeA
+	p.ChangeAUSD = data.ChangeAUSD
+	p.ChangeB = data.ChangeB
+	p.ChangeBUSD = data.ChangeBUSD
 
 	return p
 }

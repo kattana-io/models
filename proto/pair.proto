@@ -37,4 +37,8 @@ message Pair  {
   string  BaseSlug = 29;
   string  QuoteSlug = 30;
   int32   Order = 31;
+  double ChangeA = 32;
+  double ChangeAUSD = 33;
+  double ChangeB = 34;
+  double ChangeBUSD = 35;
 }
