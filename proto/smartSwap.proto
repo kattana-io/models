@@ -1,0 +1,35 @@
+syntax = "proto3";
+
+package binary;
+
+option go_package = "/pkg-bin/storage";
+
+enum SwapType{
+  UNDEFINED_TYPE = 0;
+  PAIR_SWAP = 1;
+  DIRECT_SWAP = 2;
+  PROXY_PAIR_SWAP = 3;
+  PROXY_DIRECT_SWAP = 4;
+}
+
+message SmartSwap{
+  string Tx = 1;
+  int64  Date = 2;
+  string Chain = 3;
+  uint64 BlockNumber = 4;
+  string Protocol = 5;
+  string Pair = 6;
+  string SrcToken = 7;
+  string DstToken = 8;
+  bytes Amount0 = 9;
+  bytes Amount1 = 10;
+  bool Buy = 11;
+  string  PriceA = 12;
+  string  PriceAUSD = 13;
+  string  PriceB = 14;
+  string  PriceBUSD = 15;
+  string  Wallet = 16;
+  SwapType SwapType = 17;
+  uint32  Order = 18;
+  string  ValueUSD = 19;
+}
