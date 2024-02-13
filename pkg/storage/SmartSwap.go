@@ -74,55 +74,53 @@ func (ds *SmartSwap) Unpack(data *storage.SmartSwap) *SmartSwap {
 	return ds
 }
 
-func (ds *SmartSwap) UnpackDirect(data *storage.DirectSwap, isProxy bool) *SmartSwap {
+func (ds *SmartSwap) ConvertFromDirect(data *DirectSwap, isProxy bool) *SmartSwap {
 	ds.Tx = data.Tx
-	ds.Date = time.Unix(data.Date, 0)
+	ds.Date = data.Date, 0
 	ds.Chain = data.Chain
 	ds.BlockNumber = data.BlockNumber
 	ds.Protocol = data.Protocol
 	ds.SrcToken = data.SrcToken
 	ds.DstToken = data.DstToken
-	ds.Amount0 = new(big.Int).SetBytes(data.Amount0)
-	ds.Amount1 = new(big.Int).SetBytes(data.Amount1)
+	ds.Amount0 = data.Amount0
+	ds.Amount1 = data.Amount1
 
-	//TODO change to decimal.FromString()?
-	ds.PriceA = decimal.RequireFromString(data.PriceA)
-	ds.PriceAUSD = decimal.RequireFromString(data.PriceAUSD)
-	ds.PriceB = decimal.RequireFromString(data.PriceB)
-	ds.PriceBUSD = decimal.RequireFromString(data.PriceBUSD)
+	ds.PriceA = data.PriceA
+	ds.PriceAUSD = data.PriceAUSD
+	ds.PriceB = data.PriceB
+	ds.PriceBUSD = data.PriceBUSD
 	ds.Wallet = data.Wallet
 	ds.SwapType = int(storage.SwapType_DIRECT_SWAP)
 	if isProxy {
 		ds.SwapType = int(storage.SwapType_PROXY_DIRECT_SWAP)
 	}
-	ds.Order = uint16(data.Order)
-	ds.ValueUSD = decimal.RequireFromString(data.ValueUSD)
+	ds.Order = data.Order
+	ds.ValueUSD = data.ValueUSD
 
 	return ds
 }
 
-func (ds *SmartSwap) UnpackPair(data *storage.PairSwap, isProxy bool) *SmartSwap {
+func (ds *SmartSwap) ConvertFromPair(data *PairSwap, isProxy bool) *SmartSwap {
 	ds.Tx = data.Tx
-	ds.Date = time.Unix(data.Date, 0)
+	ds.Date = data.Date
 	ds.Chain = data.Chain
 	ds.BlockNumber = data.BlockNumber
 	ds.Pair = data.Pair
-	ds.Amount0 = new(big.Int).SetBytes(data.Amount0)
-	ds.Amount1 = new(big.Int).SetBytes(data.Amount1)
+	ds.Amount0 = data.Amount0
+	ds.Amount1 = data.Amount1
 
-	//TODO change to decimal.FromString()?
-	ds.PriceA = decimal.RequireFromString(data.PriceA)
-	ds.PriceAUSD = decimal.RequireFromString(data.PriceAUSD)
-	ds.PriceB = decimal.RequireFromString(data.PriceB)
-	ds.PriceBUSD = decimal.RequireFromString(data.PriceBUSD)
+	ds.PriceA = data.PriceA
+	ds.PriceAUSD = data.PriceAUSD
+	ds.PriceB = data.PriceB
+	ds.PriceBUSD = data.PriceBUSD
 	ds.Wallet = data.Wallet
 	ds.SwapType = int(storage.SwapType_PAIR_SWAP)
 	if isProxy {
 		ds.SwapType = int(storage.SwapType_PROXY_PAIR_SWAP)
 	}
 
-	ds.Order = uint16(data.Order)
-	ds.ValueUSD = decimal.RequireFromString(data.ValueUSD)
+	ds.Order = data.Order
+	ds.ValueUSD = data.ValueUSD
 
 	return ds
 }
