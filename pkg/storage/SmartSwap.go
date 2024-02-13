@@ -76,7 +76,7 @@ func (ds *SmartSwap) Unpack(data *storage.SmartSwap) *SmartSwap {
 
 func (ds *SmartSwap) ConvertFromDirect(data *DirectSwap, isProxy bool) *SmartSwap {
 	ds.Tx = data.Tx
-	ds.Date = data.Date, 0
+	ds.Date = data.Date
 	ds.Chain = data.Chain
 	ds.BlockNumber = data.BlockNumber
 	ds.Protocol = data.Protocol
