@@ -71,6 +71,7 @@ type ApiTrade struct {
 	Order        uint16    `ch:"order" json:"order"`
 	ValueUsd     float32   `ch:"value_usd" json:"value_usd"`
 	Ticker       any       `json:"ticker,omitempty"`
+	WalletTags   []string  `json:"wallet_tags"`
 	IsProxyTrade bool      `ch:"-" json:"is_proxy_trade"`
 }
 
