@@ -9,24 +9,26 @@ message ApiTradesBlock {
 }
 
 message ApiTrade {
-    string Tx = 1;
-    int64 Date = 2;
-    int64 Timestamp = 3;
-    string Chain = 4;
-    uint64 Blocknumber = 5;
-    string Pair = 6;
-    string Amount0 = 7;
-    string Amount1 = 8;
-    bool Buy = 9;
-    float PriceA = 10;
-    float PriceAUSD = 11;
-    float PriceB = 12;
-    float PriceBUSD = 13;
-    bool Bot = 14;
-    string Wallet = 15;
-    int32 Order = 16;
-    float ValueUsd = 17;
-    uint64 Ticker = 18;
-    bool IsProxyTrade = 19;
-  }
+  string Tx = 1;
+  int64 Date = 2;
+  int64 Timestamp = 3;
+  string Chain = 4;
+  uint64 Blocknumber = 5;
+  string Pair = 6;
+  string Amount0 = 7;
+  string Amount1 = 8;
+  bool Buy = 9;
+  float PriceA = 10;
+  float PriceAUSD = 11;
+  float PriceB = 12;
+  float PriceBUSD = 13;
+  bool Bot = 14;
+  string Wallet = 15;
+  int32 Order = 16;
+  float ValueUsd = 17;
+  uint64 Ticker = 18;
+  bool IsProxyTrade = 19;
+  uint32 TotalTradesCount = 20;
+  uint32 PairTradesCount = 21;
+}
   
