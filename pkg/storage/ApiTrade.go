@@ -53,26 +53,28 @@ func (tb *ApiTradesBlock) UnMarshal(buf []byte) error {
  */
 // Trade example
 type ApiTrade struct {
-	Tx           string    `ch:"tx" json:"tx"`
-	Date         time.Time `ch:"date" json:"date"`
-	Timestamp    uint32    `ch:"timestamp" json:"timestamp"`
-	Chain        string    `ch:"chain" json:"chain"`
-	Blocknumber  uint64    `ch:"blocknumber" json:"blocknumber"`
-	Pair         string    `ch:"pair" json:"pair"`
-	Amount0      string    `ch:"amount0" json:"amount0"`
-	Amount1      string    `ch:"amount1" json:"amount1"`
-	Buy          uint8     `ch:"buy" json:"buy"`
-	PriceA       float32   `ch:"pricea" json:"price_a"`
-	PriceAUSD    float32   `ch:"pricea_usd" json:"price_a_usd"`
-	PriceB       float32   `ch:"priceb" json:"price_b"`
-	PriceBUSD    float32   `ch:"priceb_usd" json:"price_b_usd"`
-	Bot          uint8     `ch:"bot" json:"bot"`
-	Wallet       string    `ch:"wallet" json:"wallet"`
-	Order        uint16    `ch:"order" json:"order"`
-	ValueUsd     float32   `ch:"value_usd" json:"value_usd"`
-	Ticker       any       `json:"ticker,omitempty"`
-	WalletTags   []string  `json:"wallet_tags"`
-	IsProxyTrade bool      `ch:"-" json:"is_proxy_trade"`
+	Tx               string    `ch:"tx" json:"tx"`
+	Date             time.Time `ch:"date" json:"date"`
+	Timestamp        uint32    `ch:"timestamp" json:"timestamp"`
+	Chain            string    `ch:"chain" json:"chain"`
+	Blocknumber      uint64    `ch:"blocknumber" json:"blocknumber"`
+	Pair             string    `ch:"pair" json:"pair"`
+	Amount0          string    `ch:"amount0" json:"amount0"`
+	Amount1          string    `ch:"amount1" json:"amount1"`
+	Buy              uint8     `ch:"buy" json:"buy"`
+	PriceA           float32   `ch:"pricea" json:"price_a"`
+	PriceAUSD        float32   `ch:"pricea_usd" json:"price_a_usd"`
+	PriceB           float32   `ch:"priceb" json:"price_b"`
+	PriceBUSD        float32   `ch:"priceb_usd" json:"price_b_usd"`
+	Bot              uint8     `ch:"bot" json:"bot"`
+	Wallet           string    `ch:"wallet" json:"wallet"`
+	Order            uint16    `ch:"order" json:"order"`
+	ValueUsd         float32   `ch:"value_usd" json:"value_usd"`
+	Ticker           any       `json:"ticker,omitempty"`
+	WalletTags       []string  `json:"wallet_tags"`
+	IsProxyTrade     bool      `ch:"-" json:"is_proxy_trade"`
+	TotalTradesCount uint32    `ch:"-" json:"total_trades_count"`
+	PairTradesCount  uint32    `ch:"-" json:"pair_trades_count"`
 }
 
 func (t *ApiTrade) Pack() *storage.ApiTrade {
@@ -85,24 +87,26 @@ func (t *ApiTrade) Pack() *storage.ApiTrade {
 	}
 
 	return &storage.ApiTrade{
-		Tx:           t.Tx,
-		Date:         t.Date.Unix(),
-		Timestamp:    int64(t.Timestamp),
-		Chain:        t.Chain,
-		Blocknumber:  t.Blocknumber,
-		Pair:         t.Pair,
-		Amount0:      t.Amount0,
-		Amount1:      t.Amount1,
-		Buy:          buy,
-		Bot:          bot,
-		PriceA:       t.PriceA,
-		PriceB:       t.PriceB,
-		PriceAUSD:    t.PriceAUSD,
-		PriceBUSD:    t.PriceBUSD,
-		Wallet:       t.Wallet,
-		Order:        int32(t.Order),
-		ValueUsd:     t.ValueUsd,
-		IsProxyTrade: t.IsProxyTrade,
+		Tx:               t.Tx,
+		Date:             t.Date.Unix(),
+		Timestamp:        int64(t.Timestamp),
+		Chain:            t.Chain,
+		Blocknumber:      t.Blocknumber,
+		Pair:             t.Pair,
+		Amount0:          t.Amount0,
+		Amount1:          t.Amount1,
+		Buy:              buy,
+		Bot:              bot,
+		PriceA:           t.PriceA,
+		PriceB:           t.PriceB,
+		PriceAUSD:        t.PriceAUSD,
+		PriceBUSD:        t.PriceBUSD,
+		Wallet:           t.Wallet,
+		Order:            int32(t.Order),
+		ValueUsd:         t.ValueUsd,
+		IsProxyTrade:     t.IsProxyTrade,
+		TotalTradesCount: t.TotalTradesCount,
+		PairTradesCount:  t.PairTradesCount,
 	}
 }
 
@@ -133,7 +137,8 @@ func (t *ApiTrade) Unpack(data *storage.ApiTrade) *ApiTrade {
 	t.Order = uint16(data.Order)
 	t.ValueUsd = data.ValueUsd
 	t.IsProxyTrade = data.IsProxyTrade
-
+	t.TotalTradesCount = data.TotalTradesCount
+	t.PairTradesCount = data.PairTradesCount
 	return t
 }
 
