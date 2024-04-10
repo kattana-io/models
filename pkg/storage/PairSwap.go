@@ -10,42 +10,46 @@ import (
 )
 
 type PairSwap struct {
-	Tx          string          `json:"tx"`
-	Date        time.Time       `json:"date"`
-	Chain       string          `json:"chain"`
-	BlockNumber uint64          `json:"blocknumber"`
-	Pair        string          `json:"pair"`
-	Amount0     *big.Int        `json:"amount0"`
-	Amount1     *big.Int        `json:"amount1"`
-	Buy         bool            `json:"buy"`
-	PriceA      decimal.Decimal `json:"pricea"`
-	PriceAUSD   decimal.Decimal `json:"pricea_usd"`
-	PriceB      decimal.Decimal `json:"priceb"`
-	PriceBUSD   decimal.Decimal `json:"priceb_usd"`
-	Bot         bool            `json:"bot"`
-	Wallet      string          `json:"wallet"`
-	Order       uint16          `json:"order"`
-	ValueUSD    decimal.Decimal `json:"value_usd"`
+	Tx               string          `json:"tx"`
+	Date             time.Time       `json:"date"`
+	Chain            string          `json:"chain"`
+	BlockNumber      uint64          `json:"blocknumber"`
+	Pair             string          `json:"pair"`
+	Amount0          *big.Int        `json:"amount0"`
+	Amount1          *big.Int        `json:"amount1"`
+	Buy              bool            `json:"buy"`
+	PriceA           decimal.Decimal `json:"pricea"`
+	PriceAUSD        decimal.Decimal `json:"pricea_usd"`
+	PriceB           decimal.Decimal `json:"priceb"`
+	PriceBUSD        decimal.Decimal `json:"priceb_usd"`
+	Bot              bool            `json:"bot"`
+	Wallet           string          `json:"wallet"`
+	Order            uint16          `json:"order"`
+	ValueUSD         decimal.Decimal `json:"value_usd"`
+	TotalTradesCount uint32          `json:"total_trades_count"`
+	PairTradesCount  uint32          `json:"pair_trades_count"`
 }
 
 func (p *PairSwap) Pack() *storage.PairSwap {
 	return &storage.PairSwap{
-		Tx:          p.Tx,
-		Date:        p.Date.Unix(),
-		Chain:       p.Chain,
-		BlockNumber: p.BlockNumber,
-		Pair:        p.Pair,
-		Amount0:     p.Amount0.Bytes(),
-		Amount1:     p.Amount1.Bytes(),
-		Buy:         p.Buy,
-		PriceA:      p.PriceA.String(),
-		PriceAUSD:   p.PriceAUSD.String(),
-		PriceB:      p.PriceB.String(),
-		PriceBUSD:   p.PriceBUSD.String(),
-		Bot:         p.Bot,
-		Wallet:      p.Wallet,
-		Order:       uint32(p.Order),
-		ValueUSD:    p.ValueUSD.String(),
+		Tx:               p.Tx,
+		Date:             p.Date.Unix(),
+		Chain:            p.Chain,
+		BlockNumber:      p.BlockNumber,
+		Pair:             p.Pair,
+		Amount0:          p.Amount0.Bytes(),
+		Amount1:          p.Amount1.Bytes(),
+		Buy:              p.Buy,
+		PriceA:           p.PriceA.String(),
+		PriceAUSD:        p.PriceAUSD.String(),
+		PriceB:           p.PriceB.String(),
+		PriceBUSD:        p.PriceBUSD.String(),
+		Bot:              p.Bot,
+		Wallet:           p.Wallet,
+		Order:            uint32(p.Order),
+		ValueUSD:         p.ValueUSD.String(),
+		TotalTradesCount: p.TotalTradesCount,
+		PairTradesCount:  p.PairTradesCount,
 	}
 }
 
@@ -66,6 +70,8 @@ func (p *PairSwap) Unpack(data *storage.PairSwap) *PairSwap {
 	p.Wallet = data.Wallet
 	p.Order = uint16(data.Order)
 	p.ValueUSD = decimal.RequireFromString(data.ValueUSD)
+	p.TotalTradesCount = data.TotalTradesCount
+	p.PairTradesCount = data.PairTradesCount
 
 	return p
 }
