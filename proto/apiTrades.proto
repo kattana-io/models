@@ -31,4 +31,32 @@ message ApiTrade {
   uint32 TotalTradesCount = 20;
   uint32 PairTradesCount = 21;
 }
-  
+
+enum TradeSize {
+  ALL_SIZE = 0;
+  SHRIMP = 1;
+  FISH = 2;
+  SHARK = 3;
+  WHALE = 4;
+}
+
+message TradeFilter {
+  float PriceMin = 1;
+  float PriceMax = 2;
+  float PriceUSDMin = 3;
+  float PriceUSDMax = 4;
+  float VolumeMin = 5;
+  float VolumeMax = 6;
+  float VolumeSellMin = 7;
+  float VolumeSellMfx = 8;
+  float BaseMin = 9;
+  float BaseMax = 10;
+  float QuoteMin = 11;
+  float QuoteMax = 12;
+  string Wallet = 13;
+  bool Buy = 14;
+  bool Sell = 15;
+  bool Add = 16;
+  bool Del = 17;
+  TradeSize Size = 18;
+}
