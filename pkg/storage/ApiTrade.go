@@ -75,6 +75,11 @@ type ApiTrade struct {
 	IsProxyTrade     bool      `ch:"-" json:"is_proxy_trade"`
 	TotalTradesCount uint32    `ch:"-" json:"total_trades_count"`
 	PairTradesCount  uint32    `ch:"-" json:"pair_trades_count"`
+	Klass            string    `ch:"" json:"klass"`
+	Reserve0         string    `ch:"-" json:"reverse0"`
+	Reserve1         string    `ch:"-" json:"reverse1"`
+	ReserveUSD       string    `ch:"-" json:"reverse_usd"`
+	ValidTill        int64     `ch:"-" json:"valid_till"`
 }
 
 func (t *ApiTrade) Pack() *storage.ApiTrade {
@@ -107,6 +112,11 @@ func (t *ApiTrade) Pack() *storage.ApiTrade {
 		IsProxyTrade:     t.IsProxyTrade,
 		TotalTradesCount: t.TotalTradesCount,
 		PairTradesCount:  t.PairTradesCount,
+		Klass:            t.Klass,
+		Reserve0:         t.Reserve0,
+		Reserve1:         t.Reserve1,
+		ReserveUSD:       t.ReserveUSD,
+		ValidTill:        t.ValidTill,
 	}
 }
 
@@ -139,6 +149,11 @@ func (t *ApiTrade) Unpack(data *storage.ApiTrade) *ApiTrade {
 	t.IsProxyTrade = data.IsProxyTrade
 	t.TotalTradesCount = data.TotalTradesCount
 	t.PairTradesCount = data.PairTradesCount
+	t.Klass = data.Klass
+	t.Reserve0 = data.Reserve0
+	t.Reserve1 = data.Reserve1
+	t.ReserveUSD = data.ReserveUSD
+	t.ValidTill = data.ValidTill
 	return t
 }
 
