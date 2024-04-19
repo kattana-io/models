@@ -28,6 +28,11 @@ type PairSwap struct {
 	ValueUSD         decimal.Decimal `json:"value_usd"`
 	TotalTradesCount uint32          `json:"total_trades_count"`
 	PairTradesCount  uint32          `json:"pair_trades_count"`
+	Klass            string          `json:"klass"`
+	Reserve0         string          `json:"reverse0"`
+	Reserve1         string          `json:"reverse1"`
+	ReserveUSD       string          `json:"reverse_usd"`
+	ValidTill        int64           `json:"valid_till"`
 }
 
 func (p *PairSwap) Pack() *storage.PairSwap {
@@ -50,6 +55,11 @@ func (p *PairSwap) Pack() *storage.PairSwap {
 		ValueUSD:         p.ValueUSD.String(),
 		TotalTradesCount: p.TotalTradesCount,
 		PairTradesCount:  p.PairTradesCount,
+		Klass:            p.Klass,
+		Reserve0:         p.Reserve0,
+		Reserve1:         p.Reserve1,
+		ReserveUSD:       p.ReserveUSD,
+		ValidTill:        p.ValidTill,
 	}
 }
 
@@ -72,6 +82,11 @@ func (p *PairSwap) Unpack(data *storage.PairSwap) *PairSwap {
 	p.ValueUSD = decimal.RequireFromString(data.ValueUSD)
 	p.TotalTradesCount = data.TotalTradesCount
 	p.PairTradesCount = data.PairTradesCount
+	p.Klass = data.Klass
+	p.Reserve0 = data.Reserve0
+	p.Reserve1 = data.Reserve1
+	p.ReserveUSD = data.ReserveUSD
+	p.ValidTill = data.ValidTill
 
 	return p
 }

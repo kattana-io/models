@@ -23,4 +23,12 @@ message PairSwap {
   string  ValueUSD = 16;
   uint32 TotalTradesCount = 17;
   uint32 PairTradesCount = 18;
+  // mint, burn or trade
+  string Klass = 19;
+  // Sync
+  string Reserve0 = 20;
+  string Reserve1 = 21;
+  // Reserves value in USD
+  string ReserveUSD = 22;
+  int64 ValidTill = 23;
 }

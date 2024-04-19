@@ -30,6 +30,14 @@ message ApiTrade {
   bool IsProxyTrade = 19;
   uint32 TotalTradesCount = 20;
   uint32 PairTradesCount = 21;
+  // mint, burn or trade
+  string Klass = 22;
+  // Sync
+  string Reserve0 = 23;
+  string Reserve1 = 24;
+  // Reserves value in USD
+  string ReserveUSD = 25;
+  int64 ValidTill = 26;
 }
 
 enum TradeSize {
