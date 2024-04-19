@@ -14,11 +14,11 @@ type Filter struct {
 	VolumeMax     float32
 	VolumeSellMin float32
 	VolumeSellMfx float32
-	BaseMin       float32
-	BaseMax       float32
-	QuoteMin      float32
-	QuoteMax      float32
-	Wallet        string
+	BaseMin       string
+	BaseMax       string
+	QuoteMin      string
+	QuoteMax      string
+	Wallet        []string
 	Buy           bool
 	Sell          bool
 	Add           bool

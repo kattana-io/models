@@ -49,11 +49,11 @@ message TradeFilter {
   float VolumeMax = 6;
   float VolumeSellMin = 7;
   float VolumeSellMfx = 8;
-  float BaseMin = 9;
-  float BaseMax = 10;
-  float QuoteMin = 11;
-  float QuoteMax = 12;
-  string Wallet = 13;
+  string BaseMin = 9;
+  string BaseMax = 10;
+  string QuoteMin = 11;
+  string QuoteMax = 12;
+  repeated string Wallet = 13;
   bool Buy = 14;
   bool Sell = 15;
   bool Add = 16;
