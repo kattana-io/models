@@ -1,0 +1,27 @@
+syntax = "proto3";
+
+package binary;
+
+option go_package = "/pkg-bin/storage";
+
+message TraderWallet {
+    string Wallet = 1;
+    string Pair = 2;
+    uint64 Count = 3;
+}
+
+message TraderWalletsBlock {
+    string Chain = 1;
+    uint64 Timestamp = 2;
+    bool Live = 3;
+    repeated TraderWallet Trades = 4;
+}
+
+message TraderWalletCard  {
+    uint64 FirstTradeAt = 1;
+    uint64 LastTradeAt = 2;
+    uint64 CreatedAt = 3;
+    uint64 UpdatedAt = 4;
+    uint64 TotalTrades = 5;
+    map<string, uint64> Pairs = 6;
+}
