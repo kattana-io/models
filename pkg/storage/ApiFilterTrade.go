@@ -10,6 +10,10 @@ type Filter struct {
 	PriceMax      float32
 	PriceUSDMin   float32
 	PriceUSDMax   float32
+	PriceBMin     float32
+	PriceBMax     float32
+	PriceBUSDMin  float32
+	PriceBUSDMax  float32
 	VolumeMin     float32
 	VolumeMax     float32
 	VolumeSellMin float32
@@ -24,6 +28,7 @@ type Filter struct {
 	Add           bool
 	Del           bool
 	Size          storage.TradeSize
+	Flipped       bool
 }
 
 func (t *Filter) Pack() *storage.TradeFilter {
@@ -32,6 +37,10 @@ func (t *Filter) Pack() *storage.TradeFilter {
 		PriceMax:      t.PriceMax,
 		PriceUSDMin:   t.PriceUSDMin,
 		PriceUSDMax:   t.PriceUSDMax,
+		PriceBMin:     t.PriceBMin,
+		PriceBMax:     t.PriceBMax,
+		PriceBUSDMin:  t.PriceBUSDMin,
+		PriceBUSDMax:  t.PriceBUSDMax,
 		VolumeMin:     t.VolumeMin,
 		VolumeMax:     t.VolumeMax,
 		VolumeSellMin: t.VolumeSellMin,
@@ -46,15 +55,19 @@ func (t *Filter) Pack() *storage.TradeFilter {
 		Add:           t.Add,
 		Del:           t.Del,
 		Size:          t.Size,
+		Flipped:       t.Flipped,
 	}
 }
 
 func (t *Filter) Unpack(data *storage.TradeFilter) *Filter {
-
 	t.PriceMin = data.PriceMin
 	t.PriceMax = data.PriceMax
 	t.PriceUSDMin = data.PriceUSDMin
 	t.PriceUSDMax = data.PriceUSDMax
+	t.PriceBMin = data.PriceBMin
+	t.PriceBMax = data.PriceBMax
+	t.PriceBUSDMin = data.PriceBUSDMin
+	t.PriceBUSDMax = data.PriceBUSDMax
 	t.VolumeMin = data.VolumeMin
 	t.VolumeMax = data.VolumeMax
 	t.VolumeSellMin = data.VolumeSellMin
@@ -69,6 +82,7 @@ func (t *Filter) Unpack(data *storage.TradeFilter) *Filter {
 	t.Add = data.Add
 	t.Del = data.Del
 	t.Size = data.Size
+	t.Flipped = data.Flipped
 	return t
 }
 

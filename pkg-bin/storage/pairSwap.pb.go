@@ -43,7 +43,7 @@ type PairSwap struct {
 	ValueUSD         string `protobuf:"bytes,16,opt,name=ValueUSD,proto3" json:"ValueUSD,omitempty"`
 	TotalTradesCount uint32 `protobuf:"varint,17,opt,name=TotalTradesCount,proto3" json:"TotalTradesCount,omitempty"`
 	PairTradesCount  uint32 `protobuf:"varint,18,opt,name=PairTradesCount,proto3" json:"PairTradesCount,omitempty"`
-	// mint/ burn or trade
+	// mint, burn or trade
 	Klass string `protobuf:"bytes,19,opt,name=Klass,proto3" json:"Klass,omitempty"`
 	// Sync
 	Reserve0 string `protobuf:"bytes,20,opt,name=Reserve0,proto3" json:"Reserve0,omitempty"`

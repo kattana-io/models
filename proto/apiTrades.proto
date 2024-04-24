@@ -67,4 +67,9 @@ message TradeFilter {
   bool Add = 16;
   bool Del = 17;
   TradeSize Size = 18;
+  float PriceBMin = 19;
+  float PriceBMax = 20;
+  float PriceBUSDMin = 21;
+  float PriceBUSDMax = 22;
+  bool Flipped = 23;
 }
