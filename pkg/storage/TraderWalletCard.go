@@ -15,8 +15,10 @@ type TraderWalletCard struct {
 type TraderWalletPair struct {
 	BuyTradesCount  uint64  `json:"buy_trades_count"`
 	SellTradesCount uint64  `json:"sell_trades_count"`
-	BuyValue        float64 `json:"buy_value"`
 	BuyValueUsd     float64 `json:"buy_value_usd"`
-	SellValue       float64 `json:"sell_value"`
 	SellValueUsd    float64 `json:"sell_value_usd"`
+	Amount0Buy      string  `json:"amount_0_buy"`
+	Amount0Sell     string  `json:"amount_0_sell"`
+	Amount1Buy      string  `json:"amount_1_buy"`
+	Amount1Sell     string  `json:"amount_1_sell"`
 }

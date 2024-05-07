@@ -20,10 +20,12 @@ message TraderWalletsBlock {
 message TraderWalletPair{
   uint64 BuyTradesCount = 1;
   uint64 SellTradesCount = 2;
-  float BuyValue = 3;
-  float BuyValueUsd = 4;
-  float SellValue = 5;
-  float SellValueUsd = 6;
+  float BuyValueUsd = 3;
+  float SellValueUsd = 4;
+  string Amount0Buy = 5;
+  string Amount0Sell = 6;
+  string Amount1Buy = 7;
+  string Amount1Sell = 8;
 }
 
 message TraderWalletCard  {
