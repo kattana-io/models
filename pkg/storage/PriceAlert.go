@@ -12,7 +12,7 @@ type PriceAlert struct {
 	Status     string  `gorm:"column:status;type:VARCHAR;" json:"status"`
 	Exchange   string  `gorm:"column:exchange;type:VARCHAR;" json:"exchange"`
 	Name       string  `gorm:"column:name;type:VARCHAR;" json:"name"`
-	Wallet     string  `gorm:"column:wallet;type:VARCHAR;" json:"wallet"`
+	Wallet     string  `gorm:"column:wallet;type:VARCHAR;default:null;" json:"wallet"`
 	Token      string  `gorm:"column:token;type:VARCHAR;" json:"token"`
 	Chain      string  `gorm:"column:chain;type:VARCHAR;" json:"chain"`
 	Pair       string  `gorm:"column:pair;type:VARCHAR;" json:"pair"`
@@ -23,6 +23,7 @@ type PriceAlert struct {
 	CreatedAt  int64   `gorm:"column:created_at;type:int64;" json:"created_at"`
 	ExecutedAt int64   `gorm:"column:executed_at;type:int64;" json:"executed_at"`
 	Hidden     bool    `gorm:"column:hidden;type:BOOL;" json:"hidden"`
+	UserID     int64   `gorm:"column:user_id;type:int8;default:null;" json:"user_id"`
 }
 
 // TableName overrides the table name used by User to `profiles`
@@ -48,6 +49,7 @@ func (p *PriceAlert) pack() *storage.PriceAlert {
 		CreatedAt:  p.CreatedAt,
 		ExecutedAt: p.ExecutedAt,
 		Hidden:     p.Hidden,
+		UserId:     p.UserID,
 	}
 }
 
@@ -68,6 +70,7 @@ func (p *PriceAlert) unpack(data *storage.PriceAlert) *PriceAlert {
 	p.CreatedAt = data.CreatedAt
 	p.ExecutedAt = data.ExecutedAt
 	p.Hidden = data.Hidden
+	p.UserID = data.UserId
 	return p
 }
 
