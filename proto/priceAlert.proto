@@ -21,4 +21,5 @@ message PriceAlert  {
   int64   CreatedAt = 14;
   int64   ExecutedAt = 15;
   bool    Hidden = 16;
+  int64 UserId = 17;
 }
