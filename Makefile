@@ -2,6 +2,7 @@
 all : proto-gen-go
 
 proto-gen-go:
+	@docker run --rm -v `pwd`:/defs namely/protoc-all:1.51_1 -i proto -f enum.proto -l go -o .
 	@docker run --rm -v `pwd`:/defs namely/protoc-all:1.51_1 -i proto -f block.proto -l go -o .
 	@docker run --rm -v `pwd`:/defs namely/protoc-all:1.51_1 -i proto -f blockState.proto -l go -o .
 	@docker run --rm -v `pwd`:/defs namely/protoc-all:1.51_1 -i proto -f candles.proto -l go -o .
