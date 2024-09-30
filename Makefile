@@ -2,6 +2,7 @@
 all : proto-gen-go
 
 proto-gen-go:
+	@docker run --rm -v `pwd`:/defs namely/protoc-all:1.51_1 -i proto -f enum.proto -l go -o .
 	@docker run --rm -v `pwd`:/defs namely/protoc-all:1.51_1 -i proto -f block.proto -l go -o .
 	@docker run --rm -v `pwd`:/defs namely/protoc-all:1.51_1 -i proto -f blockState.proto -l go -o .
 	@docker run --rm -v `pwd`:/defs namely/protoc-all:1.51_1 -i proto -f candles.proto -l go -o .
@@ -12,7 +13,7 @@ proto-gen-go:
 	@docker run --rm -v `pwd`:/defs namely/protoc-all:1.51_1 -i proto -f holdersBlock.proto -l go -o .
 	@docker run --rm -v `pwd`:/defs namely/protoc-all:1.51_1 -i proto -f limitOrder.proto -l go -o .
 	@docker run --rm -v `pwd`:/defs namely/protoc-all:1.51_1 -i proto -f limitTrade.proto -l go -o .
-	@docker run --rm -v `pwd`:/defs namely/protoc-all:1.51_1 -i proto -f liquidityEvant.proto -l go -o .
+	@docker run --rm -v `pwd`:/defs namely/protoc-all:1.51_1 -i proto -f liquidityEvent.proto -l go -o .
 	@docker run --rm -v `pwd`:/defs namely/protoc-all:1.51_1 -i proto -f newPair.proto -l go -o .
 	@docker run --rm -v `pwd`:/defs namely/protoc-all:1.51_1 -i proto -f pair.proto -l go -o .
 	@docker run --rm -v `pwd`:/defs namely/protoc-all:1.51_1 -i proto -f pairSwap.proto -l go -o .

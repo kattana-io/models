@@ -2,6 +2,8 @@ syntax = "proto3";
 
 package binary;
 
+import "enum.proto";
+
 option go_package = "/pkg-bin/storage";
 
 message LiquidityEvent{
@@ -30,4 +32,6 @@ message LiquidityEvent{
   // Reserves value in USD
   string ReserveUSD = 18;
   int64 ValidTill = 19;
+  // Swap protocol
+  LiquidityType Source = 20;
 }
