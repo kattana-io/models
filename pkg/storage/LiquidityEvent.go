@@ -1,10 +1,11 @@
 package models
 
 import (
+	"time"
+
 	"github.com/kattana-io/models/pkg-bin/storage"
 	"github.com/shopspring/decimal"
 	"google.golang.org/protobuf/proto"
-	"time"
 )
 
 type LiquidityEvent struct {
@@ -33,6 +34,8 @@ type LiquidityEvent struct {
 	// Reserves value in USD
 	ReserveUSD decimal.Decimal `json:"reserve_usd"`
 	ValidTill  time.Time       `json:"valid_till"`
+
+	Source int32 `json:"source"`
 }
 
 func (l *LiquidityEvent) pack() *storage.LiquidityEvent {
@@ -56,6 +59,7 @@ func (l *LiquidityEvent) pack() *storage.LiquidityEvent {
 		ValueUSD:    l.ValueUSD.String(),
 		ReserveUSD:  l.ReserveUSD.String(),
 		ValidTill:   l.ValidTill.Unix(),
+		Source:      storage.LiquidityType(l.Source),
 	}
 }
 
@@ -82,6 +86,7 @@ func (l *LiquidityEvent) unpack(data *storage.LiquidityEvent) *LiquidityEvent {
 	l.ReserveUSD = decimal.RequireFromString(data.ReserveUSD)
 
 	l.ValidTill = time.Unix(data.ValidTill, 0)
+	l.Source = int32(data.Source)
 
 	return l
 }
