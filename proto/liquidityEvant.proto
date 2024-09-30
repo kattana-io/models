@@ -30,4 +30,6 @@ message LiquidityEvent{
   // Reserves value in USD
   string ReserveUSD = 18;
   int64 ValidTill = 19;
+  // Swap protocol
+  string Source = 20;
 }
