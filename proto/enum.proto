@@ -2,9 +2,9 @@ syntax = "proto3";
 
 option go_package = "/pkg-bin/storage";
 
-package proto;
+package binary;
 
-enum LiquiditySource {
+enum LiquidityType {
     UNDEFINED_LIQUIDITY_SOURCE = 0;
     UNISWAP_V2 = 1;
     UNISWAP_V3 = 2;

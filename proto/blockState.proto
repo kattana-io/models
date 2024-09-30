@@ -7,7 +7,7 @@ option go_package = "/pkg-bin/storage";
 import "block.proto";
 import "directSwap.proto";
 import "pairSwap.proto";
-import "liquidityEvant.proto";
+import "liquidityEvent.proto";
 import "transferEvent.proto";
 import "newPair.proto";
 import "holder.proto";
