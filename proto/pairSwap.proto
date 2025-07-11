@@ -31,4 +31,7 @@ message PairSwap {
   // Reserves value in USD
   string ReserveUSD = 22;
   int64 ValidTill = 23;
+  bytes SqrtPriceX96 = 24;
+  bytes Liquidity = 25;
+  bytes Tick = 26;
 }

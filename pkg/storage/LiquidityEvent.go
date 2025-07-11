@@ -36,30 +36,37 @@ type LiquidityEvent struct {
 	ValidTill  time.Time       `json:"valid_till"`
 
 	Source int32 `json:"source"`
+
+	SqrtPriceX96 string `json:"sqrt_price_x96"`
+	Liquidity    string `json:"liquidity"`
+	Tick         string `json:"tick"`
 }
 
 func (l *LiquidityEvent) pack() *storage.LiquidityEvent {
 	return &storage.LiquidityEvent{
-		BlockNumber: l.BlockNumber,
-		Date:        l.Date.Unix(),
-		Tx:          l.Tx,
-		Pair:        l.Pair,
-		Chain:       l.Chain,
-		Klass:       l.Klass,
-		Wallet:      l.Wallet,
-		Order:       uint32(l.Order),
-		Amount0:     l.Amount0,
-		Amount1:     l.Amount1,
-		Reserve0:    l.Reserve0,
-		Reserve1:    l.Reserve1,
-		PriceA:      l.PriceA.String(),
-		PriceAUSD:   l.PriceAUSD.String(),
-		PriceB:      l.PriceB.String(),
-		PriceBUSD:   l.PriceBUSD.String(),
-		ValueUSD:    l.ValueUSD.String(),
-		ReserveUSD:  l.ReserveUSD.String(),
-		ValidTill:   l.ValidTill.Unix(),
-		Source:      storage.LiquidityType(l.Source),
+		BlockNumber:  l.BlockNumber,
+		Date:         l.Date.Unix(),
+		Tx:           l.Tx,
+		Pair:         l.Pair,
+		Chain:        l.Chain,
+		Klass:        l.Klass,
+		Wallet:       l.Wallet,
+		Order:        uint32(l.Order),
+		Amount0:      l.Amount0,
+		Amount1:      l.Amount1,
+		Reserve0:     l.Reserve0,
+		Reserve1:     l.Reserve1,
+		PriceA:       l.PriceA.String(),
+		PriceAUSD:    l.PriceAUSD.String(),
+		PriceB:       l.PriceB.String(),
+		PriceBUSD:    l.PriceBUSD.String(),
+		ValueUSD:     l.ValueUSD.String(),
+		ReserveUSD:   l.ReserveUSD.String(),
+		ValidTill:    l.ValidTill.Unix(),
+		Source:       storage.LiquidityType(l.Source),
+		SqrtPriceX96: l.SqrtPriceX96,
+		Liquidity:    l.Liquidity,
+		Tick:         l.Tick,
 	}
 }
 
@@ -87,6 +94,10 @@ func (l *LiquidityEvent) unpack(data *storage.LiquidityEvent) *LiquidityEvent {
 
 	l.ValidTill = time.Unix(data.ValidTill, 0)
 	l.Source = int32(data.Source)
+
+	l.SqrtPriceX96 = data.SqrtPriceX96
+	l.Liquidity = data.Liquidity
+	l.Tick = data.Tick
 
 	return l
 }

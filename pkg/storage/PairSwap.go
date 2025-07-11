@@ -33,6 +33,9 @@ type PairSwap struct {
 	Reserve1         string          `json:"reverse1"`
 	ReserveUSD       string          `json:"reverse_usd"`
 	ValidTill        int64           `json:"valid_till"`
+	SqrtPriceX96     *big.Int        `json:"sqrt_price_x96"`
+	Liquidity        *big.Int        `json:"liquidity"`
+	Tick             *big.Int        `json:"tick"`
 }
 
 func (p *PairSwap) Pack() *storage.PairSwap {
@@ -60,6 +63,9 @@ func (p *PairSwap) Pack() *storage.PairSwap {
 		Reserve1:         p.Reserve1,
 		ReserveUSD:       p.ReserveUSD,
 		ValidTill:        p.ValidTill,
+		SqrtPriceX96:     p.SqrtPriceX96.Bytes(),
+		Liquidity:        p.Liquidity.Bytes(),
+		Tick:             p.Tick.Bytes(),
 	}
 }
 
@@ -87,6 +93,9 @@ func (p *PairSwap) Unpack(data *storage.PairSwap) *PairSwap {
 	p.Reserve1 = data.Reserve1
 	p.ReserveUSD = data.ReserveUSD
 	p.ValidTill = data.ValidTill
+	p.SqrtPriceX96 = new(big.Int).SetBytes(data.SqrtPriceX96)
+	p.Liquidity = new(big.Int).SetBytes(data.Liquidity)
+	p.Tick = new(big.Int).SetBytes(data.Tick)
 
 	return p
 }
