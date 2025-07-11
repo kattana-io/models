@@ -34,4 +34,7 @@ message LiquidityEvent{
   int64 ValidTill = 19;
   // Swap protocol
   LiquidityType Source = 20;
+  string SqrtPriceX96 = 24;
+  string Liquidity = 25;
+  string Tick = 26;
 }
